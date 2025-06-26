@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="MeetManagerWPF.View.UserControls.Input"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MeetManagerWPF.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="300">
+    <Grid Background="#008CDB" MinWidth="250">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Margin="5 0 0 0" 
+                   VerticalAlignment="Center" 
+                   FontSize="30"
+                   Foreground="#20448C"
+                   Text="PlaceHolder">
+        </TextBlock>
+        
+        <Button Grid.Column="1"
+                Content="X" 
+                HorizontalAlignment="Right" 
+                Width="50"
+                FontSize="30"
+                Foreground="#20448C"
+                Background="Transparent">
+        </Button>
+    </Grid>
+</UserControl>
