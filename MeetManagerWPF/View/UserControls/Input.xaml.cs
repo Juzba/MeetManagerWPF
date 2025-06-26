@@ -24,5 +24,16 @@ namespace MeetManagerWPF.View.UserControls
         {
             InitializeComponent();
         }
+
+        private void Button_Clear(object sender, RoutedEventArgs e)
+        {
+            TextBoxInput.Clear();
+        }
+
+        private void TextBoxInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TextBoxInput.Text)) TextBlockPlaceHolder.Visibility = Visibility.Visible;
+            else TextBlockPlaceHolder.Visibility = Visibility.Hidden;
+        }
     }
 }

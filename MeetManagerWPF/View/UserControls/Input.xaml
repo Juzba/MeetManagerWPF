@@ -6,18 +6,33 @@
              xmlns:local="clr-namespace:MeetManagerWPF.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
-    <Grid Background="#008CDB" MinWidth="250">
+    <Grid Background="#008CDB" MinWidth="300">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Margin="5 0 0 0" 
-                   VerticalAlignment="Center" 
-                   FontSize="30"
-                   Foreground="#20448C"
-                   Text="PlaceHolder">
+        <TextBlock
+            x:Name="TextBlockPlaceHolder"
+            Margin="5 0 0 0" 
+            VerticalAlignment="Center" 
+            FontSize="30"
+            Foreground="#20448C"
+            Text="PlaceHolder">
         </TextBlock>
+        <TextBox
+            x:Name="TextBoxInput"
+            BorderBrush="Transparent"
+            MaxLength="15"
+            Margin="5 0 0 0"
+            Foreground="#FFD340"
+            VerticalAlignment="Center" 
+            FontSize="30"
+            Background="Transparent"
+            TextChanged="TextBoxInput_TextChanged"
+            >
+        </TextBox>
+        
         
         <Button Grid.Column="1"
                 Content="X" 
@@ -25,7 +40,9 @@
                 Width="50"
                 FontSize="30"
                 Foreground="#20448C"
-                Background="Transparent">
+                Background="Transparent"
+                Click="Button_Clear"
+                >
         </Button>
     </Grid>
 </UserControl>

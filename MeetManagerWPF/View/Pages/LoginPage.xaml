@@ -13,15 +13,22 @@
     <Grid Background="#20448C">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition MinWidth="330"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock TextAlignment="Center" Margin="10" FontSize="60" Text="Login" Foreground="#FFBC24" ></TextBlock>
+            <TextBlock TextAlignment="Center" Margin="0 0 0 15" FontSize="60" Text="Login" Foreground="#FFBC24" ></TextBlock>
             <UserControls:Input Margin="10"></UserControls:Input>
             <UserControls:Input Margin="10"></UserControls:Input>
-            <Button Background="#FFBC24" Foreground="#20448C" Margin="20" Width="200" FontSize="30" Content="Přihlásit se" ></Button>
+                <Button 
+                    Background="#FFBC24" 
+                    Foreground="#20448C" 
+                    Margin="20" 
+                    Width="200" 
+                    FontSize="30" 
+                    Content="Přihlásit se" >
+                </Button>
         </StackPanel>
     </Grid>
 </Page>
