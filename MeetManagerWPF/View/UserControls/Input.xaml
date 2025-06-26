@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MeetManagerWPF.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
-    <Grid Background="#008CDB" MinWidth="300">
+    <Grid Background="{Binding Background}" MinWidth="300">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>
@@ -17,15 +17,15 @@
             Margin="5 0 0 0" 
             VerticalAlignment="Center" 
             FontSize="30"
-            Foreground="#20448C"
-            Text="PlaceHolder">
+            Foreground="{Binding PlaceholderColor}"
+            Text="{Binding Placeholder}">
         </TextBlock>
         <TextBox
             x:Name="TextBoxInput"
             BorderBrush="Transparent"
             MaxLength="15"
             Margin="5 0 0 0"
-            Foreground="#FFD340"
+            Foreground="{Binding Foreground}"
             VerticalAlignment="Center" 
             FontSize="30"
             Background="Transparent"

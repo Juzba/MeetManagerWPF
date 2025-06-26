@@ -19,8 +19,20 @@
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock TextAlignment="Center" Margin="0 0 0 15" FontSize="60" Text="Login" Foreground="#FFBC24" ></TextBlock>
-            <UserControls:Input Margin="10"></UserControls:Input>
-            <UserControls:Input Margin="10"></UserControls:Input>
+            <UserControls:Input
+                Placeholder="Jméno"
+                PlaceholderColor="#20448C"
+                Background="#008CDB"
+                Foreground="#FFD340"
+                Margin="10"
+                ></UserControls:Input>
+            <UserControls:Input
+                Placeholder="Heslo"
+                PlaceholderColor="#20448C"
+                Background="#008CDB"
+                Foreground="#FFD340"
+                Margin="10"
+                ></UserControls:Input>
                 <Button 
                     Background="#FFBC24" 
                     Foreground="#20448C" 

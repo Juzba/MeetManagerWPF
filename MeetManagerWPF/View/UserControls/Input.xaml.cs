@@ -15,15 +15,44 @@ using System.Windows.Shapes;
 
 namespace MeetManagerWPF.View.UserControls
 {
-    /// <summary>
-    /// Interakční logika pro Input.xaml
-    /// </summary>
     public partial class Input : UserControl
     {
         public Input()
         {
             InitializeComponent();
+            DataContext = this;
         }
+
+        private string _placeholder = "";
+        public string Placeholder
+        {
+            get { return _placeholder; }
+            set { _placeholder = value; }
+        }
+
+        private string _background;
+        public new string Background
+        {
+            get { return _background; }
+            set { _background = value; }
+        }
+
+        private string _foreground;
+        public new string Foreground
+        {
+            get { return _foreground; }
+            set { _foreground = value; }
+        }
+
+        private string _placeholderColor;
+        public string PlaceholderColor
+        {
+            get { return _placeholderColor; }
+            set { _placeholderColor = value; }
+        }
+
+
+
 
         private void Button_Clear(object sender, RoutedEventArgs e)
         {
