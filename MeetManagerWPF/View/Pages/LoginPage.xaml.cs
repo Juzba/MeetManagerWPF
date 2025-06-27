@@ -16,15 +16,14 @@ using System.Windows.Shapes;
 
 namespace MeetManagerWPF.View.Pages
 {
-    /// <summary>
-    /// Interakční logika pro LoginPage.xaml
-    /// </summary>
     public partial class LoginPage : Page
     {
-        public LoginPage()
+        private readonly LoginViewModel _loginViewModel;
+        public LoginPage(LoginViewModel loginViewModel)
         {
+            _loginViewModel = loginViewModel;
             InitializeComponent();
-            DataContext = new LoginViewModel();
+            DataContext = _loginViewModel;
         }
     }
 }

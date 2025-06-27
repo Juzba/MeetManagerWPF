@@ -30,21 +30,21 @@ namespace MeetManagerWPF.View.UserControls
             set { _placeholder = value; }
         }
 
-        private string _background;
+        private string _background = "";
         public new string Background
         {
             get { return _background; }
             set { _background = value; }
         }
 
-        private string _foreground;
+        private string _foreground = "";
         public new string Foreground
         {
             get { return _foreground; }
             set { _foreground = value; }
         }
 
-        private string _placeholderColor;
+        private string _placeholderColor = "";
         public string PlaceholderColor
         {
             get { return _placeholderColor; }

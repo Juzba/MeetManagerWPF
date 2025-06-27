@@ -1,15 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MeetManagerWPF.View;
 using MeetManagerWPF.View.Pages;
 using System.Windows;
 
 namespace MeetManagerWPF.ViewModel
 {
     
-    partial class LoginViewModel : ObservableObject
+     public class LoginViewModel : ObservableObject
     {
-        public LoginViewModel()
+        private readonly Login _login;
+
+        public LoginViewModel(Login login)
         {
+            _login = login;
             BtnToRegisterPage = new RelayCommand(ToRegisterPage);
         }
 
@@ -20,7 +24,7 @@ namespace MeetManagerWPF.ViewModel
         public void ToRegisterPage()
         {
             MessageBox.Show("register page");
-            loginFrame.Navigate(new RegisterPage());
+           _login.loginFrame.Navigate(new RegisterPage());
         }
 
     }

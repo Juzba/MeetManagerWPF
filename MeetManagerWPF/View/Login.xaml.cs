@@ -19,12 +19,12 @@ namespace MeetManagerWPF.View
 
     public partial class Login : Window
     {
-        public Login()
+        private readonly LoginPage _loginPage;
+        public Login(LoginPage  loginPage)
         {
             InitializeComponent();
-            loginFrame.Navigate(new LoginPage());
-
-
+            _loginPage = loginPage;
+            loginFrame.Navigate(_loginPage);
         }
     }
 }
