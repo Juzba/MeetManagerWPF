@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetManagerWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MeetManagerWPF.View.Pages
         public LoginPage()
         {
             InitializeComponent();
+            DataContext = new LoginViewModel();
         }
     }
 }

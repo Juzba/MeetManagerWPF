@@ -26,7 +26,6 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Data\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>

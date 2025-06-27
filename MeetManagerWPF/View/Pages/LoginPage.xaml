@@ -4,11 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:UserControls="clr-namespace:MeetManagerWPF.View.UserControls"
+      xmlns:ViewModel="clr-namespace:MeetManagerWPF.ViewModel"
       xmlns:local="clr-namespace:MeetManagerWPF.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="450"
       Title="LoginPage">
-
+    <!--<Page.DataContext>
+        <ViewModel:LoginViewModel/>
+    </Page.DataContext>-->
 
     <Grid Background="#20448C">
         <Grid.ColumnDefinitions>
@@ -32,15 +35,25 @@
                 Background="#008CDB"
                 Foreground="#FFD340"
                 Margin="10"
-                ></UserControls:Input>
-                <Button 
-                    Background="#FFBC24" 
-                    Foreground="#20448C" 
-                    Margin="20" 
-                    Width="200" 
-                    FontSize="30" 
-                    Content="Přihlásit se" >
-                </Button>
+            ></UserControls:Input>
+            <Button 
+                Background="#FFBC24" 
+                Foreground="#20448C" 
+                Margin="20" 
+                Width="200" 
+                FontSize="30" 
+                Content="Přihlásit" >
+            </Button>
+
+            <Button 
+                Background="Transparent" 
+                BorderBrush="Transparent"
+                Width="200"
+                Command="{Binding BtnToRegisterPage}"
+                Content="Registrovat"
+                FontSize="20"
+                >
+            </Button>
         </StackPanel>
     </Grid>
 </Page>
