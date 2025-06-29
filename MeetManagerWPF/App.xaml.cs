@@ -1,6 +1,6 @@
-﻿using MeetManagerWPF.View;
-using MeetManagerWPF.View.Pages;
+﻿using MeetManagerWPF.View.Pages;
 using MeetManagerWPF.ViewModel;
+using MeetManagerWPF.View;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
@@ -24,17 +24,19 @@ namespace MeetManagerWPF
             ServiceProvider = services.BuildServiceProvider();
 
             // Otevření MainWindow
-            var login = ServiceProvider.GetRequiredService<Login>();
-            login.Show();
+            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+            mainWindow.Show();
+            mainWindow.DataContext = ServiceProvider.GetRequiredService<LoginViewModel>();
+
+            var loginView = new LoginView();
+            mainWindow.Content = loginView;
+            loginView.FrameLogin.Navigate(new LoginPage());
         }
 
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<MainWindow>(); // Registrace MainWindow jako služby
-            services.AddSingleton<Login>(); // Registrace Login jako služby
             services.AddSingleton<LoginViewModel>(); 
-            services.AddSingleton<LoginPage>(); 
-
         }
 
     }

@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MeetManagerWPF.View.Pages;
-using MeetManagerWPF.ViewModel;
 
 namespace MeetManagerWPF.View
 {
-
-    public partial class Login : Window
+    /// <summary>
+    /// Interakční logika pro LoginView.xaml
+    /// </summary>
+    public partial class LoginView : UserControl
     {
-        private readonly LoginPage _loginPage;
-        public Login(LoginPage  loginPage)
+        public LoginView()
         {
             InitializeComponent();
-            _loginPage = loginPage;
-            loginFrame.Navigate(_loginPage);
         }
     }
 }
