@@ -4,11 +4,71 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MeetManagerWPF.View.Pages"
+      xmlns:UserControls="clr-namespace:MeetManagerWPF.View.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterPage">
 
     <Grid Background="#20448C">
-        <TextBlock HorizontalAlignment="Center" FontSize="60" Text="Registrovat se"></TextBlock>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="330"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition MinWidth="330"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="3"  Grid.Column="0" TextAlignment="Center" Margin="0 0 0 15" FontSize="60" Text="Registrovat se" Foreground="#FFBC24" ></TextBlock>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <UserControls:Input
+                             Placeholder="Jméno"
+                             PlaceholderColor="#20448C"
+                             Background="#008CDB"
+                             Foreground="#FFD340"
+                             Margin="10"
+            ></UserControls:Input>
+
+            <UserControls:Input
+     Placeholder="Heslo"
+     PlaceholderColor="#20448C"
+     Background="#008CDB"
+     Foreground="#FFD340"
+     Margin="10"
+ ></UserControls:Input>
+
+            <UserControls:Input
+     Placeholder="Opakovat Heslo"
+     PlaceholderColor="#20448C"
+     Background="#008CDB"
+     Foreground="#FFD340"
+     Margin="10"
+ ></UserControls:Input>
+
+            <Button 
+                    Background="#FFBC24" 
+                    Foreground="#20448C" 
+                    Margin="20" 
+                    Width="200" 
+                    FontSize="30" 
+                    Content="Registrovat" >
+            </Button>
+
+            <Button 
+    Background="Transparent" 
+    BorderBrush="Transparent"
+    Width="200"
+    Command="{Binding NavigateToLoginCommand}"
+    Content="Zpět na Login"
+    FontSize="20"
+    >
+            </Button>
+
+        </StackPanel>
     </Grid>
 </Page>

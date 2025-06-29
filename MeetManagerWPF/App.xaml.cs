@@ -23,20 +23,29 @@ namespace MeetManagerWPF
             ConfigureServices(services);
             ServiceProvider = services.BuildServiceProvider();
 
-            // Otevření MainWindow
+
+            // Window first Initialize to LoginPage
+            var View = ServiceProvider.GetRequiredService<LoginView>();
+            var viewModel = ServiceProvider.GetRequiredService<LoginViewModel>();
+            var loginPage = new LoginPage();
+
+            // Open MainWindow
             var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
-            mainWindow.DataContext = ServiceProvider.GetRequiredService<LoginViewModel>();
 
-            var loginView = new LoginView();
-            mainWindow.Content = loginView;
-            loginView.FrameLogin.Navigate(new LoginPage());
+            // Add Content and DataContext to MainVindow
+            mainWindow.Content = View;
+
+            // Open LoginPage in Frame for Login
+            View.FrameLogin.Navigate(loginPage);
+            loginPage.DataContext = viewModel;
         }
 
         private static void ConfigureServices(ServiceCollection services)
         {
-            services.AddSingleton<MainWindow>(); // Registrace MainWindow jako služby
+            services.AddSingleton<MainWindow>(); 
             services.AddSingleton<LoginViewModel>(); 
+            services.AddSingleton<LoginView>(); 
         }
 
     }

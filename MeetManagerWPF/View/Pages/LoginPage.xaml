@@ -7,21 +7,29 @@
       xmlns:ViewModel="clr-namespace:MeetManagerWPF.ViewModel"
       xmlns:local="clr-namespace:MeetManagerWPF.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="450"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="LoginPage">
     <!--<Page.DataContext>
         <ViewModel:LoginViewModel/>
     </Page.DataContext>-->
 
     <Grid Background="#20448C">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition MinWidth="330"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock TextAlignment="Center" Margin="0 0 0 15" FontSize="60" Text="Login" Foreground="#FFBC24" ></TextBlock>
+        <TextBlock Grid.ColumnSpan="3" TextAlignment="Center" Margin="0 0 0 15" FontSize="60" Text="Login" Foreground="#FFBC24" ></TextBlock>
+       
+        <StackPanel Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
             <UserControls:Input
                 Placeholder="Jméno"
                 PlaceholderColor="#20448C"
@@ -49,7 +57,7 @@
                 Background="Transparent" 
                 BorderBrush="Transparent"
                 Width="200"
-                Command="{Binding BtnToRegisterPage}"
+                Command="{Binding NavigateToRegisterCommand}"
                 Content="Registrovat"
                 FontSize="20"
                 >

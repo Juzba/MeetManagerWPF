@@ -6,5 +6,5 @@
              xmlns:local="clr-namespace:MeetManagerWPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Frame x:Name="FrameLogin"></Frame>
+    <Frame NavigationUIVisibility="Hidden" x:Name="FrameLogin"></Frame>
 </UserControl>
