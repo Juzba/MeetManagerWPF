@@ -39,26 +39,12 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <UserControls:Input
-                Margin="10"
-                Background="#008CDB"
-                Foreground="#FFD340"
-                Placeholder="Jméno"
-                PlaceholderColor="#20448C" />
+            <UserControls:Input Margin="10" Placeholder="Jméno" />
 
-            <UserControls:Input
-                Margin="10"
-                Background="#008CDB"
-                Foreground="#FFD340"
-                Placeholder="Heslo"
-                PlaceholderColor="#20448C" />
+            <UserControls:Input Margin="10" Placeholder="Heslo" />
 
-            <UserControls:Input
-                Margin="10"
-                Background="#008CDB"
-                Foreground="#FFD340"
-                Placeholder="Opakovat Heslo"
-                PlaceholderColor="#20448C" />
+
+            <UserControls:Input Margin="10" Placeholder="Opakovat heslo" />
 
             <Button
                 Width="200"

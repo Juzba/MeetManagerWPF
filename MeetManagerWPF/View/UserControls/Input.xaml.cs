@@ -1,10 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace MeetManagerWPF.View.UserControls
 {
-    [ObservableObject]
     public partial class Input : UserControl
     {
         public Input()
@@ -12,48 +10,53 @@ namespace MeetManagerWPF.View.UserControls
             InitializeComponent();
         }
 
-        private string _placeholder = "";
+
+        // PLACEHOLDER
         public string Placeholder
         {
-            get { return _placeholder; }
-            set { _placeholder = value; }
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
         }
 
-        private string _background = "";
+        public static readonly DependencyProperty PlaceholderProperty =
+            DependencyProperty.Register("Placeholder", typeof(string), typeof(Input), new PropertyMetadata("nic"));
+
+
+        // BACKGROUND
         public new string Background
         {
-            get { return _background; }
-            set { _background = value; }
+            get { return (string)GetValue(BackgroundProperty); }
+            set { SetValue(BackgroundProperty, value); }
         }
 
-        private string _foreground = "";
+        // Using a DependencyProperty as the backing store for Background.  This enables animation, styling, binding, etc...
+        public static new readonly DependencyProperty BackgroundProperty =
+            DependencyProperty.Register("Background", typeof(string), typeof(Input), new PropertyMetadata("#008CDB"));
+
+
+        // FOREGROUND
         public new string Foreground
         {
-            get { return _foreground; }
-            set { _foreground = value; }
+            get { return (string)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
         }
 
-        private string _placeholderColor = "";
-        public string PlaceholderColor
-        {
-            get { return _placeholderColor; }
-            set { _placeholderColor = value; }
-        }
+        // Using a DependencyProperty as the backing store for Foreground.  This enables animation, styling, binding, etc...
+        public static new readonly DependencyProperty ForegroundProperty =
+            DependencyProperty.Register("Foreground", typeof(string), typeof(Input), new PropertyMetadata("#FFD340"));
 
 
-
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
-            nameof(TextInp), typeof(string), typeof(Input),
-            new PropertyMetadata(string.Empty));
-
+        // TEXT INPUT
         public string TextInp
         {
-            get => (string)GetValue(TextProperty);
-            set { 
-                SetValue(TextProperty, value);
+            get { return (string)GetValue(TextInpProperty); }
+            set { SetValue(TextInpProperty, value); }
 
-            }
+
         }
+
+        public static readonly DependencyProperty TextInpProperty =
+            DependencyProperty.Register("TextInp", typeof(string), typeof(Input), new PropertyMetadata(""));
 
 
 
@@ -62,13 +65,11 @@ namespace MeetManagerWPF.View.UserControls
             TextBoxInput.Clear();
         }
 
+
         private void TextBoxInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxInput.Text)) TextBlockPlaceHolder.Visibility = Visibility.Visible;
-            else
-            {
-                TextBlockPlaceHolder.Visibility = Visibility.Hidden;
-            }
+            else { TextBlockPlaceHolder.Visibility = Visibility.Hidden; }
         }
     }
 }

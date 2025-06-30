@@ -5,10 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MeetManagerWPF.View.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="root"
     d:DesignHeight="50"
     d:DesignWidth="300"
-    x:Name="root"
     mc:Ignorable="d">
+
+
     <Grid MinWidth="300" Background="{Binding Background, ElementName=root}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -20,8 +22,9 @@
             Margin="5,0,0,0"
             VerticalAlignment="Center"
             FontSize="30"
-            Foreground="{Binding PlaceholderColor, ElementName=root}"
+            Foreground="Black"
             Text="{Binding Placeholder, ElementName=root}" />
+
         <TextBox
             x:Name="TextBoxInput"
             Margin="5,0,0,0"
@@ -31,8 +34,8 @@
             FontSize="30"
             Foreground="{Binding Foreground, ElementName=root}"
             MaxLength="15"
-            Text="{Binding TextInp, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextChanged="TextBoxInput_TextChanged" />
+            TextChanged="TextBoxInput_TextChanged"
+            Text="{Binding TextInp, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
 
         <Button
