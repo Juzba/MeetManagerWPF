@@ -14,6 +14,31 @@ namespace MeetManagerWPF.ViewModel
             _loginView = loginView;
         }
 
+        //[ObservableProperty]
+        //private string? loginUserName;
+
+        //[ObservableProperty]
+        //private string? loginPassword;
+
+        private string? _loginUserName;
+
+        public string? LoginUserName
+        {
+            get { return _loginUserName; }
+            set { _loginUserName = value; }
+        }
+
+
+
+
+
+        [RelayCommand]
+        private void Login()
+        {
+            MessageBox.Show(_loginUserName);
+        }
+
+
 
         [RelayCommand]
         private void NavigateToRegister()
@@ -30,7 +55,6 @@ namespace MeetManagerWPF.ViewModel
             _loginView.FrameLogin.Navigate(loginPage);
             loginPage.DataContext = this;
         }
-
 
 
     }

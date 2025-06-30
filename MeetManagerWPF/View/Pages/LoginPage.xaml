@@ -6,7 +6,7 @@
     xmlns:ViewModel="clr-namespace:MeetManagerWPF.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MeetManagerWPF.View.Pages"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DataContext="{d:DesignInstance Type=ViewModel:LoginViewModel}"
     Title="LoginPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -43,6 +43,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <UserControls:Input
+                Text="{Binding LoginUserName, Mode=TwoWay}"
                 Margin="10"
                 Background="#008CDB"
                 Foreground="#FFD340"
@@ -58,6 +59,7 @@
                 Width="200"
                 Margin="20"
                 Background="#FFBC24"
+                Command="{Binding LoginCommand}"
                 Content="Přihlásit"
                 FontSize="30"
                 Foreground="#20448C" />

@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MeetManagerWPF.View.UserControls
 {
+    [ObservableObject]
     public partial class Input : UserControl
     {
         public Input()
@@ -54,6 +46,51 @@ namespace MeetManagerWPF.View.UserControls
 
 
 
+
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register(
+                name: "Text",
+                propertyType: typeof(string),
+                ownerType: typeof(Input),
+                // 2. Metadata jsou klíčová!
+                typeMetadata: new FrameworkPropertyMetadata(
+                    defaultValue: string.Empty,
+                    // Tato volba zajistí, že se změny projeví okamžitě (při psaní)
+                    // a že binding bude defaultně TwoWay.
+                    flags: FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    // (Volitelné, ale doporučené) Explicitní callback pro ladění
+                    propertyChangedCallback: null,
+                    // (Volitelné) Umožňuje validaci a transformaci hodnoty
+                    coerceValueCallback: null,
+                    // TOTO je důležité pro okamžitou aktualizaci zdroje (ViewModelu)
+                    isAnimationProhibited: false,
+                    defaultUpdateSourceTrigger: UpdateSourceTrigger.PropertyChanged
+                )
+            );
+
+        // 3. Obalující .NET vlastnost (CLR wrapper) s get i set.
+        //    WPF ji primárně nepoužívá pro binding, ale je nutná pro přístup z kódu a pro konvenci.
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void Button_Clear(object sender, RoutedEventArgs e)
         {
             TextBoxInput.Clear();
@@ -62,7 +99,11 @@ namespace MeetManagerWPF.View.UserControls
         private void TextBoxInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxInput.Text)) TextBlockPlaceHolder.Visibility = Visibility.Visible;
-            else TextBlockPlaceHolder.Visibility = Visibility.Hidden;
+            else
+            {
+                TextBlockPlaceHolder.Visibility = Visibility.Hidden;
+            }
+            this.Text = TextBoxInput.Text;
         }
     }
 }
