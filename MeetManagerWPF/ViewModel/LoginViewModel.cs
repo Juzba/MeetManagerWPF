@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace MeetManagerWPF.ViewModel
 {
-    public partial class LoginViewModel: ObservableObject
+    public partial class LoginViewModel : ObservableObject
     {
         private readonly LoginView _loginView;
         public LoginViewModel(LoginView loginView)
@@ -14,20 +14,8 @@ namespace MeetManagerWPF.ViewModel
             _loginView = loginView;
         }
 
-        //[ObservableProperty]
-        //private string? loginUserName;
-
-        //[ObservableProperty]
-        //private string? loginPassword;
-
-        private string? _loginUserName;
-
-        public string? LoginUserName
-        {
-            get { return _loginUserName; }
-            set { _loginUserName = value; }
-        }
-
+        [ObservableProperty]
+        private string? userNameLogin;
 
 
 
@@ -35,7 +23,7 @@ namespace MeetManagerWPF.ViewModel
         [RelayCommand]
         private void Login()
         {
-            MessageBox.Show(_loginUserName);
+            MessageBox.Show(UserNameLogin);
         }
 
 

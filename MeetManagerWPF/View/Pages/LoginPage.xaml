@@ -43,7 +43,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <UserControls:Input
-                Text="{Binding LoginUserName, Mode=TwoWay}"
+                TextInp="{Binding UserNameLogin, Mode=TwoWay}"
                 Margin="10"
                 Background="#008CDB"
                 Foreground="#FFD340"

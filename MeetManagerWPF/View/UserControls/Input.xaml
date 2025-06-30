@@ -7,8 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="50"
     d:DesignWidth="300"
+    x:Name="root"
     mc:Ignorable="d">
-    <Grid MinWidth="300" Background="{Binding Background}">
+    <Grid MinWidth="300" Background="{Binding Background, ElementName=root}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="50" />
@@ -19,8 +20,8 @@
             Margin="5,0,0,0"
             VerticalAlignment="Center"
             FontSize="30"
-            Foreground="{Binding PlaceholderColor}"
-            Text="{Binding Placeholder}" />
+            Foreground="{Binding PlaceholderColor, ElementName=root}"
+            Text="{Binding Placeholder, ElementName=root}" />
         <TextBox
             x:Name="TextBoxInput"
             Margin="5,0,0,0"
@@ -28,9 +29,9 @@
             Background="Transparent"
             BorderBrush="Transparent"
             FontSize="30"
-            Foreground="{Binding Foreground}"
+            Foreground="{Binding Foreground, ElementName=root}"
             MaxLength="15"
-            Text="{Binding Path=Text, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding TextInp, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextChanged="TextBoxInput_TextChanged" />
 
 
