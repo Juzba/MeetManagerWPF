@@ -25,7 +25,7 @@ namespace MeetManagerWPF
             AppHost = Host.CreateDefaultBuilder().ConfigureServices((_, services) =>
             {
                 services.AddSingleton<MainWindow>();
-                services.AddTransient<INavigation, Navigation>();
+                services.AddSingleton<INavigation, Navigation>();
                 
                 //  VIEWMODEL
                 services.AddTransient<LoginViewModel>();

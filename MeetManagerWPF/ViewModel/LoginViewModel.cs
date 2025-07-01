@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace MeetManagerWPF.ViewModel;
 
-public partial class LoginViewModel(INavigation navigation) : ObservableObject
+public partial class LoginViewModel() : ObservableObject
 {
-    private readonly INavigation _navigation = navigation;
+    
 
 
     [ObservableProperty]
@@ -28,13 +28,13 @@ public partial class LoginViewModel(INavigation navigation) : ObservableObject
     [RelayCommand]
     private void NavigateToRegister()
     {
-        _navigation.NavigateToPage("RegisterPage");
+        //_navigation.NavigateToPage("RegisterPage");
     }
 
     [RelayCommand]
     private void NavigateToLogin()
     {
-        _navigation.NavigateToPage("LoginPage");
+        //_navigation.NavigateToPage("LoginPage");
     }
 
 
