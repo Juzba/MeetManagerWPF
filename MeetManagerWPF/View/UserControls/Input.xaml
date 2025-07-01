@@ -34,8 +34,8 @@
             FontSize="30"
             Foreground="{Binding Foreground, ElementName=root}"
             MaxLength="15"
-            TextChanged="TextBoxInput_TextChanged"
-            Text="{Binding TextInp, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            Text="{Binding TextInp, ElementName=root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextChanged="TextBoxInput_TextChanged" />
 
 
         <Button

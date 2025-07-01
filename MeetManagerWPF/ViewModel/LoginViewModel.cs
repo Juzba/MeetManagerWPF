@@ -18,11 +18,16 @@ namespace MeetManagerWPF.ViewModel
         private string? userNameLogin;
 
 
-
-
         [RelayCommand]
         private void Login()
         {
+
+
+
+
+
+
+
             MessageBox.Show(UserNameLogin);
         }
 
