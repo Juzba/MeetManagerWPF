@@ -1,4 +1,5 @@
-﻿using MeetManagerWPF.View;
+﻿using MeetManagerWPF.Services;
+using MeetManagerWPF.View;
 using MeetManagerWPF.View.Pages;
 using MeetManagerWPF.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,7 @@ namespace MeetManagerWPF
             AppHost = Host.CreateDefaultBuilder().ConfigureServices((_, services) =>
             {
                 services.AddSingleton<MainWindow>();
+                services.AddTransient<INavigation, Navigation>();
                 
                 //  VIEWMODEL
                 services.AddTransient<LoginViewModel>();

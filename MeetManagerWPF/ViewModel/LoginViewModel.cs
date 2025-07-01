@@ -1,13 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MeetManagerWPF.Services;
 using MeetManagerWPF.View;
 using MeetManagerWPF.View.Pages;
 using System.Windows;
 
 namespace MeetManagerWPF.ViewModel
 {
-    public partial class LoginViewModel : ObservableObject
+    public partial class LoginViewModel(INavigation navigation) : ObservableObject
     {
+        private readonly INavigation _navigation = navigation;
+
         // viewmodel nesmi obsahovat di na view!!!
 
         [ObservableProperty]
@@ -26,11 +29,13 @@ namespace MeetManagerWPF.ViewModel
         [RelayCommand]
         private void NavigateToRegister()
         {
+            _navigation.NavigateToPage("Register");
         }
 
         [RelayCommand]
         private void NavigateToLogin()
         {
+            _navigation.NavigateToPage("Login");
         }
 
 
