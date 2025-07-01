@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using MeetManagerWPF.View;
+using MeetManagerWPF.ViewModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +18,10 @@ namespace MeetManagerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(LoginViewModel loginViewModel)
         {
             InitializeComponent();
+            this.Content = new LoginView(loginViewModel);
         }
     }
 }

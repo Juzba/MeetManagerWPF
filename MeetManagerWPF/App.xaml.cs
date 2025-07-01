@@ -31,8 +31,8 @@ namespace MeetManagerWPF
                 services.AddTransient<LoginViewModel>();
 
                 //  WIEV
-                services.AddTransient<LoginView>();
-                services.AddTransient<LoginPage>();
+                //services.AddTransient<LoginView>();
+                //services.AddTransient<LoginPage>();
 
 
             }).Build();
@@ -44,19 +44,9 @@ namespace MeetManagerWPF
 
             await AppHost.StartAsync();
 
-            // Window first Initialize to LoginPage
-            var View = AppHost.Services.GetRequiredService<LoginView>();
-            var loginPage = AppHost.Services.GetRequiredService<LoginPage>();
-
             //// Open MainWindow
             var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
-
-            //// Add Content to MainVindow
-            mainWindow.Content = View;
-
-            //// Open LoginPage in Frame for Login
-            View.FrameLogin.Navigate(loginPage);
 
             base.OnStartup(e);
         }
