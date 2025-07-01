@@ -18,9 +18,10 @@ namespace MeetManagerWPF.View.Pages
 {
     public partial class LoginPage : Page
     {
-        public LoginPage()
+        public LoginPage(LoginViewModel loginViewModel)
         {
             InitializeComponent();
+            this.DataContext = loginViewModel;
         }
     }
 }

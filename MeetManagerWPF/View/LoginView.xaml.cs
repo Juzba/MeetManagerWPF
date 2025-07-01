@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetManagerWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace MeetManagerWPF.View
     /// </summary>
     public partial class LoginView : UserControl
     {
-        public LoginView()
+        public LoginView(LoginViewModel loginViewModel)
         {
             InitializeComponent();
+            this.DataContext = loginViewModel;
         }
     }
 }

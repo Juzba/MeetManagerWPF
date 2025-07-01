@@ -8,11 +8,7 @@ namespace MeetManagerWPF.ViewModel
 {
     public partial class LoginViewModel : ObservableObject
     {
-        private readonly LoginView _loginView;
-        public LoginViewModel(LoginView loginView)
-        {
-            _loginView = loginView;
-        }
+        // viewmodel nesmi obsahovat di na view!!!
 
         [ObservableProperty]
         private string? userNameLogin;
@@ -22,12 +18,6 @@ namespace MeetManagerWPF.ViewModel
         private void Login()
         {
 
-
-
-
-
-
-
             MessageBox.Show(UserNameLogin);
         }
 
@@ -36,17 +26,11 @@ namespace MeetManagerWPF.ViewModel
         [RelayCommand]
         private void NavigateToRegister()
         {
-            var registerPage = new RegisterPage();
-            _loginView.FrameLogin.Navigate(registerPage);
-            registerPage.DataContext = this;
         }
 
         [RelayCommand]
         private void NavigateToLogin()
         {
-            var loginPage = new LoginPage();
-            _loginView.FrameLogin.Navigate(loginPage);
-            loginPage.DataContext = this;
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeetManagerWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace MeetManagerWPF.View.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
-        public RegisterPage()
+        public RegisterPage(LoginViewModel loginViewModel)
         {
             InitializeComponent();
+            this.DataContext = loginViewModel;
         }
     }
 }

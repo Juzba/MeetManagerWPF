@@ -1,9 +1,11 @@
-﻿using MeetManagerWPF.View.Pages;
+﻿using MeetManagerWPF.View;
+using MeetManagerWPF.View.Pages;
 using MeetManagerWPF.ViewModel;
-using MeetManagerWPF.View;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System.Configuration;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace MeetManagerWPF
@@ -13,41 +15,58 @@ namespace MeetManagerWPF
     /// </summary>
     public partial class App : Application
     {
-        public static IServiceProvider ServiceProvider { get; private set; } = default!;
+        public static IHost AppHost { get; private set; } = default!;
 
-        protected override void OnStartup(StartupEventArgs e)
+
+        public App()
         {
-            base.OnStartup(e);
 
-            var services = new ServiceCollection();
-            ConfigureServices(services);
-            ServiceProvider = services.BuildServiceProvider();
+            AppHost = Host.CreateDefaultBuilder().ConfigureServices((_, services) =>
+            {
+                services.AddSingleton<MainWindow>();
+                
+                //  VIEWMODEL
+                services.AddTransient<LoginViewModel>();
 
+                //  WIEV
+                services.AddTransient<LoginView>();
+                services.AddTransient<LoginPage>();
+
+
+            }).Build();
+
+        }
+
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+
+            await AppHost.StartAsync();
 
             // Window first Initialize to LoginPage
-            var View = ServiceProvider.GetRequiredService<LoginView>();
-            var viewModel = ServiceProvider.GetRequiredService<LoginViewModel>();
-            var loginPage = new LoginPage();
+            var View = AppHost.Services.GetRequiredService<LoginView>();
+            var loginPage = AppHost.Services.GetRequiredService<LoginPage>();
 
-            // Open MainWindow
-            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+            //// Open MainWindow
+            var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
 
-            // Add Content and DataContext to MainVindow
+            //// Add Content to MainVindow
             mainWindow.Content = View;
 
-            // Open LoginPage in Frame for Login
+            //// Open LoginPage in Frame for Login
             View.FrameLogin.Navigate(loginPage);
-            loginPage.DataContext = viewModel;
+
+            base.OnStartup(e);
         }
 
-        private static void ConfigureServices(ServiceCollection services)
+
+        protected override async void OnExit(ExitEventArgs e)
         {
-            services.AddSingleton<MainWindow>(); 
-            services.AddSingleton<LoginViewModel>(); 
-            services.AddSingleton<LoginView>(); 
-        }
+            await AppHost.StopAsync();
+            AppHost.Dispose();
 
+            base.OnExit(e);
+        }
     }
 
 }
