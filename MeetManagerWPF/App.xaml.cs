@@ -1,7 +1,9 @@
-﻿using MeetManagerWPF.Services;
+﻿using MeetManagerWPF.Data;
+using MeetManagerWPF.Services;
 using MeetManagerWPF.View;
 using MeetManagerWPF.View.Pages;
 using MeetManagerWPF.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Configuration;
@@ -26,7 +28,14 @@ namespace MeetManagerWPF
             {
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<INavigation, Navigation>();
-                
+                services.AddTransient<IDataService ,DataService>();
+
+                // DB
+                services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=MeetingManager; Trusted_Connection=True;"),
+                ServiceLifetime.Scoped);
+
+
                 //  VIEWMODEL
                 services.AddTransient<MainViewModel>();
                 services.AddTransient<LoginViewModel>();

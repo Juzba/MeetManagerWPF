@@ -44,15 +44,18 @@
             <UserControls:Input
                 Margin="10"
                 Placeholder="Jméno"
-                TextInp="" />
+                TextInp="{Binding UserName, Mode=TwoWay}" />
 
-            <UserControls:Input Margin="10" Placeholder="Heslo" />
+            <UserControls:Input
+                Margin="10"
+                Placeholder="Heslo"
+                TextInp="{Binding Password, Mode=TwoWay}" />
 
             <Button
                 Width="200"
                 Margin="20"
                 Background="#FFBC24"
-                Command=""
+                Command="{Binding LoginCommand}"
                 Content="Přihlásit"
                 FontSize="30"
                 Foreground="#20448C" />

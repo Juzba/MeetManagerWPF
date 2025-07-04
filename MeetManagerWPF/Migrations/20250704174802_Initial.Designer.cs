@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeetManagerWPF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250629233423_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250704174802_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

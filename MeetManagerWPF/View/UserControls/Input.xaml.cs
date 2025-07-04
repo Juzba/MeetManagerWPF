@@ -29,7 +29,6 @@ public partial class Input : UserControl
         set { SetValue(BackgroundProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Background.  This enables animation, styling, binding, etc...
     public static new readonly DependencyProperty BackgroundProperty =
         DependencyProperty.Register("Background", typeof(string), typeof(Input), new PropertyMetadata("#008CDB"));
 
@@ -41,7 +40,6 @@ public partial class Input : UserControl
         set { SetValue(ForegroundProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Foreground.  This enables animation, styling, binding, etc...
     public static new readonly DependencyProperty ForegroundProperty =
         DependencyProperty.Register("Foreground", typeof(string), typeof(Input), new PropertyMetadata("#FFD340"));
 
@@ -51,8 +49,6 @@ public partial class Input : UserControl
     {
         get { return (string)GetValue(TextInpProperty); }
         set { SetValue(TextInpProperty, value); }
-
-
     }
 
     public static readonly DependencyProperty TextInpProperty =

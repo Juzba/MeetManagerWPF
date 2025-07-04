@@ -3,15 +3,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MeetManagerWPF.Data
 {
-    class AppDbContext : DbContext
+   public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=MeetingManager; Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=MeetingManager; Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
