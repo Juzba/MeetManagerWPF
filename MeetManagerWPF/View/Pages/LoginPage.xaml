@@ -16,7 +16,7 @@
     <Grid Background="#20448C">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition MinHeight="100" />
             <RowDefinition Height="300" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -44,7 +44,7 @@
             <UserControls:Input
                 Margin="10"
                 Placeholder="Jméno"
-                TextInp="{Binding UserNameLogin, Mode=TwoWay}" />
+                TextInp="" />
 
             <UserControls:Input Margin="10" Placeholder="Heslo" />
 
@@ -52,18 +52,11 @@
                 Width="200"
                 Margin="20"
                 Background="#FFBC24"
-                Command="{Binding LoginCommand}"
+                Command=""
                 Content="Přihlásit"
                 FontSize="30"
                 Foreground="#20448C" />
 
-            <Button
-                Width="200"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Command="{Binding NavigateToRegisterCommand}"
-                Content="Registrovat"
-                FontSize="20" />
         </StackPanel>
     </Grid>
 </Page>

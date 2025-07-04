@@ -8,10 +8,10 @@ namespace MeetManagerWPF.View.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
-        public RegisterPage(LoginViewModel loginViewModel)
+        public RegisterPage(RegisterViewModel registerViewModel)
         {
             InitializeComponent();
-            this.DataContext = loginViewModel;
+            DataContext = registerViewModel;
         }
     }
 }

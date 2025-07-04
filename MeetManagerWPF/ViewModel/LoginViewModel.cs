@@ -9,33 +9,6 @@ namespace MeetManagerWPF.ViewModel;
 
 public partial class LoginViewModel() : ObservableObject
 {
-    
-
-
-    [ObservableProperty]
-    private string? userNameLogin;
-
-
-    [RelayCommand]
-    private void Login()
-    {
-
-        MessageBox.Show(UserNameLogin);
-    }
-
-
-
-    [RelayCommand]
-    private void NavigateToRegister()
-    {
-        //_navigation.NavigateToPage("RegisterPage");
-    }
-
-    [RelayCommand]
-    private void NavigateToLogin()
-    {
-        //_navigation.NavigateToPage("LoginPage");
-    }
-
+   
 
 }

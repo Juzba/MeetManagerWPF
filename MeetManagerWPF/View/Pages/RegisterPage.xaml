@@ -16,7 +16,7 @@
     <Grid Background="#20448C">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition MinHeight="100" />
             <RowDefinition Height="330" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -33,7 +33,7 @@
             Margin="0,0,0,15"
             FontSize="60"
             Foreground="#FFBC24"
-            Text="Registrovat se"
+            Text="Register"
             TextAlignment="Center" />
 
         <StackPanel
@@ -56,13 +56,7 @@
                 FontSize="30"
                 Foreground="#20448C" />
 
-            <Button
-                Width="200"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Command="{Binding NavigateToLoginCommand}"
-                Content="Zpět na Login"
-                FontSize="20" />
+         
 
         </StackPanel>
     </Grid>

@@ -8,10 +8,7 @@ namespace MeetManagerWPF.Services
 {
     public class Messenger
     {
-        public string Page { get; set; } 
-
-
-
+       
 
     }
 }

@@ -18,10 +18,10 @@ namespace MeetManagerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(LoginViewModel loginViewModel)
+        public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            this.Content = new LoginView(loginViewModel);
+            DataContext = mainViewModel;
         }
     }
 }

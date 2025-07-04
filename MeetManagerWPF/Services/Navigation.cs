@@ -4,49 +4,26 @@ using MeetManagerWPF.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MeetManagerWPF.Services
 {
 
     public interface INavigation
     {
-        void NavigateToView(string View);
-        void NavigateToPage(string Page);
+        void NavigateToPage<TPage>() where TPage : Page;
     }
 
-
-    public class Navigation(IHost host, LoginViewModel loginViewModel) : INavigation
+    public class Navigation(IHost host) : INavigation
     {
         private readonly IHost _host = host;
-        private readonly LoginViewModel _loginViewModel = loginViewModel;
 
-
-
-
-        public void NavigateToView(string View)
+        public void NavigateToPage<TPage>() where TPage : Page
         {
-            MessageBox.Show($"next View {View}");
-
+            var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+            var page = _host.Services.GetRequiredService<TPage>();
+            mainWindow.FrameMW.Navigate(page);
         }
 
-
-        public void NavigateToPage(string Page)
-        {
-            MessageBox.Show($"next Page {Page}");
-
-            var loginView = new LoginView(_loginViewModel);
-
-            switch (Page)
-            {
-                case "LoginPage":
-                    loginView.FrameLogin.Navigate(new LoginPage(_loginViewModel));
-                    break;
-                case "RegisterPage":
-                    loginView.FrameLogin.Navigate(new RegisterPage(_loginViewModel));
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 }

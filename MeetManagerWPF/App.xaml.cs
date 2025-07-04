@@ -28,11 +28,13 @@ namespace MeetManagerWPF
                 services.AddSingleton<INavigation, Navigation>();
                 
                 //  VIEWMODEL
+                services.AddTransient<MainViewModel>();
                 services.AddTransient<LoginViewModel>();
+                services.AddTransient<RegisterViewModel>();
 
                 //  WIEV
-                //services.AddTransient<LoginView>();
-                //services.AddTransient<LoginPage>();
+                services.AddTransient<LoginPage>();
+                services.AddTransient<RegisterPage>();
 
 
             }).Build();
@@ -47,6 +49,11 @@ namespace MeetManagerWPF
             //// Open MainWindow
             var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
+
+            /// Open LoginPage on Startup
+            var loginPage = AppHost.Services.GetRequiredService<LoginPage>();
+            mainWindow.FrameMW.Navigate(loginPage);
+
 
             base.OnStartup(e);
         }
