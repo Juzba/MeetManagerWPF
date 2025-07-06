@@ -2,6 +2,7 @@
     x:Class="MeetManagerWPF.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:MeetManagerWPF.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MeetManagerWPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,45 +14,79 @@
     FontSize="28"
     mc:Ignorable="d">
 
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+        <converters:BoolToVisibilityConverter x:Key="InverseBoolToVisibility" Invert="True" />
+    </Window.Resources>
+
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <StackPanel
-            HorizontalAlignment="Right"
-            Orientation="Horizontal"
-            >
-            <TextBlock
-                Margin="20,0"
-                VerticalAlignment="Center"
-                Text="Juzba" />
-            <Button
-                Margin="15,0"
-                Padding="10,5"
-                VerticalAlignment="Center"
-                Command=""
-                Content="Register" />
-        </StackPanel>
-        <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Right"
-            Orientation="Horizontal"
-            >
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
 
-            <Button
-                Margin="15,0"
-                Padding="10,5"
-                VerticalAlignment="Center"
-                Command="{Binding NavigateToRegisterCommand}"
-                Content="Register" />
-            <Button
-                Margin="15,0"
-                Padding="10,5"
-                VerticalAlignment="Center"
-                Command="{Binding NavigateToLoginCommand}"
-                Content="Login" />
+
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="left"
+                Orientation="Horizontal">
+                <Button
+                    Margin="15,0"
+                    Padding="10,5"
+                    VerticalAlignment="Center"
+                    Command="{Binding LogoutCommand}"
+                    Content="Logout"
+                    Visibility="{Binding LoginVisibility, Converter={StaticResource BoolToVisibility}}" />
+
+                <Button
+                    Margin="15,0"
+                    Padding="10,5"
+                    VerticalAlignment="Center"
+                    Command="{Binding LogoutCommand}"
+                    Content="Logout"
+                    Visibility="{Binding LoginVisibility, Converter={StaticResource BoolToVisibility}}" />
+
+
+            </StackPanel>
+
+
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    Margin="20,0"
+                    VerticalAlignment="Center"
+                    Text="{Binding UserName}"
+                    Visibility="{Binding LoginVisibility, Converter={StaticResource BoolToVisibility}}" />
+                <Button
+                    Margin="15,0"
+                    Padding="10,5"
+                    VerticalAlignment="Center"
+                    Command="{Binding LogoutCommand}"
+                    Content="Logout"
+                    Visibility="{Binding LoginVisibility, Converter={StaticResource BoolToVisibility}}" />
+
+                <Button
+                    Margin="15,0"
+                    Padding="10,5"
+                    VerticalAlignment="Center"
+                    Command="{Binding NavigateToRegisterCommand}"
+                    Content="Register"
+                    Visibility="{Binding LoginVisibility, Converter={StaticResource InverseBoolToVisibility}}" />
+                <Button
+                    Margin="15,0"
+                    Padding="10,5"
+                    VerticalAlignment="Center"
+                    Command="{Binding NavigateToLoginCommand}"
+                    Content="Login"
+                    Visibility="{Binding LoginVisibility, Converter={StaticResource InverseBoolToVisibility}}" />
+            </StackPanel>
         </StackPanel>
 
         <Frame

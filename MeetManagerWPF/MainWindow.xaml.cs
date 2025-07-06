@@ -23,5 +23,6 @@ namespace MeetManagerWPF
             InitializeComponent();
             DataContext = mainViewModel;
         }
+
     }
 }

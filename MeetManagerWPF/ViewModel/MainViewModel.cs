@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using MeetManagerWPF.Services;
 using MeetManagerWPF.View.Pages;
-using System.Windows;
 
 namespace MeetManagerWPF.ViewModel
 {
@@ -15,13 +14,23 @@ namespace MeetManagerWPF.ViewModel
         {
             _navigation = navigation;
             _userStore = userStore;
-            loginVisibility = _userStore.IsUserLogged;
+
+            _userStore.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == nameof(UserStore.IsUserLogged))
+                {
+                    LoginVisibility = _userStore.IsUserLogged;
+                    UserName =  $"{_userStore.User?.Name ?? "UserName"} - {_userStore.User?.Role.RoleName ?? "Role"}";
+                }
+            };
         }
 
 
+        [ObservableProperty]
+        private string? userName;
 
         [ObservableProperty]
-        private bool loginVisibility; 
+        private bool loginVisibility;
 
 
 
@@ -34,6 +43,14 @@ namespace MeetManagerWPF.ViewModel
         private void NavigateToRegister() => _navigation.NavigateToPage<RegisterPage>();
 
 
+        [RelayCommand]
+        private void Logout()
+        {
+            _userStore.IsUserLogged = false;
+            _userStore.User = null;
+            _navigation.NavigateToPage<LoginPage>();
+
+        }
 
 
 

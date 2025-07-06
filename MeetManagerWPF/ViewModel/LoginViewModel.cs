@@ -9,10 +9,9 @@ using System.Windows;
 
 namespace MeetManagerWPF.ViewModel;
 
-public partial class LoginViewModel(IDataService dataService, INavigation navigation, UserStore userStore) : ObservableObject
+public partial class LoginViewModel(IDataService dataService, UserStore userStore) : ObservableObject
 {
 	private readonly IDataService _dataService = dataService;
-	private readonly INavigation _navigation = navigation;
 	private readonly UserStore _userStore = userStore;
 
    
@@ -21,27 +20,35 @@ public partial class LoginViewModel(IDataService dataService, INavigation naviga
 	public string UserName
 	{
 		get { return _userName; }
-		set { _userName = value; }
+		set { SetProperty(ref _userName, value); }
 	}
 
 	private string _password = "";
-
 	public string Password
 	{
 		get { return _password; }
-		set { _password = value; }
+		set { SetProperty(ref _password, value); }
 	}
+
 
 	[RelayCommand]
 	private async Task Login()
 	{
 		var user = await _dataService.LoginConfirmation(_userName, _password);
-		if (user == null) return;
+		if (user == null)
+		{
+			Password = "";
+			return;
+		}
 
-		_userStore.IsUserLogged = true;
+		UserName = "";
+		Password = "";
+
 		_userStore.User = user;
+		_userStore.IsUserLogged = true;
 
-		MessageBox.Show($"user: {_userName} a pass: {_password} a : {user.Role.RoleName}");
 	}
+
+
 
 }
