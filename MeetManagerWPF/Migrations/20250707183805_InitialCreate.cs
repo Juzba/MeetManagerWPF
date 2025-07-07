@@ -7,7 +7,7 @@
 namespace MeetManagerWPF.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,7 +31,7 @@ namespace MeetManagerWPF.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -57,12 +57,12 @@ namespace MeetManagerWPF.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Name", "Password", "RoleId" },
+                columns: new[] { "Id", "Name", "PasswordHash", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, "Juzba", "123456", "AdminRoleId-51sa9-sdd18" },
-                    { 2, "Katka", "123456", "ManagerRoleId-21ga5-sda13" },
-                    { 3, "Karel", "123456", "UserRoleId-54sa9-sda87" }
+                    { 1, "Juzba", "$argon2id$v=19$m=65536,t=3,p=1$+g3wENe8VfgrJvTd4E9YNQ$zvtCx0lwFdXwvR6DLKTOH6FJzm8rB6y54wSEpXbIkJk", "AdminRoleId-51sa9-sdd18" },
+                    { 2, "Katka", "$argon2id$v=19$m=65536,t=3,p=1$VSs65qBpJTKEJSTb7qXkAw$fBlpCgya4Z9LRmKnhUFzXh7tqnXrWSl2vyHkNCwEKCg", "ManagerRoleId-21ga5-sda13" },
+                    { 3, "Karel", "$argon2id$v=19$m=65536,t=3,p=1$tyqbuA8MlWrR6ZE7pWMioA$wjo5b2y+qFdDrbr23ymFvKi9xv2W55g1uvX/3T0z9/s", "UserRoleId-54sa9-sda87" }
                 });
 
             migrationBuilder.CreateIndex(

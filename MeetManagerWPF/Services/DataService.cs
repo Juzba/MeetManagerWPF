@@ -1,14 +1,12 @@
 ﻿using MeetManagerWPF.Data;
 using MeetManagerWPF.Model;
 using Microsoft.EntityFrameworkCore;
-using System.Windows;
 
 namespace MeetManagerWPF.Services
 {
     public interface IDataService
     {
-        //void DataCompare<T>();
-        Task<User?> LoginConfirmation(string userName, string password);
+        Task<User?> GetUser(string userName);
     }
 
     public class DataService(AppDbContext db) : IDataService
@@ -18,13 +16,9 @@ namespace MeetManagerWPF.Services
 
 
 
-        public async Task<User?> LoginConfirmation(string userName, string password)
+        public async Task<User?> GetUser(string userName)
         {
-            var user = await _db.Users.Include(p=>p.Role).FirstOrDefaultAsync(p => p.Name.ToLower() == userName.ToLower());
-
-            if (user == null || user.Password != password) return null;
-
-            return user;
+            return await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Name.ToLower() == userName.ToLower());
         }
     }
 }

@@ -30,6 +30,7 @@ namespace MeetManagerWPF
                 services.AddSingleton<INavigation, Navigation>();
                 services.AddSingleton<UserStore>();
                 services.AddTransient<IDataService ,DataService>();
+                services.AddTransient<IHashService,HashService>();
 
                 // DB
                 services.AddDbContext<AppDbContext>(options =>
@@ -41,10 +42,14 @@ namespace MeetManagerWPF
                 services.AddTransient<MainViewModel>();
                 services.AddTransient<LoginViewModel>();
                 services.AddTransient<RegisterViewModel>();
+                services.AddTransient<AdminViewModel>();
+                services.AddTransient<HomeViewModel>();
 
                 //  WIEV
                 services.AddTransient<LoginPage>();
                 services.AddTransient<RegisterPage>();
+                services.AddTransient<AdminPage>();
+                services.AddTransient<HomePage>();
 
 
             }).Build();

@@ -10,7 +10,7 @@ namespace MeetManagerWPF.Model
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
 
         // Role
         public string RoleId { get; set; } = "UserRoleId-54sa9-sda87";
