@@ -20,6 +20,7 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
         set { SetProperty(ref _userName, value); }
     }
 
+
     // PASSWORD //
     private string _password = "";
     public string Password
@@ -29,16 +30,20 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
     }
 
 
+    // LOGIN COMMAND //
     [RelayCommand]
     private async Task Login()
     {
+        // INSTANT LOGIN //
+        _userName = "Juzba"; // delete this
+
 
         var user = await _dataService.GetUser(_userName);
-        if (user == null || !_hashService.VerifyPassword(_password, user.PasswordHash))
-        {
-            Password = "";
-            return;
-        }
+        //if (user == null || !_hashService.VerifyPassword(_password, user.PasswordHash))
+        //{
+        //    Password = "";
+        //    return;
+        //}
 
         // LOGIN CONFIRMED
         UserName = "";

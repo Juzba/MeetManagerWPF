@@ -1,13 +1,46 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
+using MeetManagerWPF.Model;
+using MeetManagerWPF.Services;
+using System.Collections.ObjectModel;
 
 namespace MeetManagerWPF.ViewModel
 {
-    public class AdminViewModel: ObservableObject
+    public partial class AdminViewModel : ObservableObject
     {
+        private readonly IDataService _dataService;
+
+
+        [ObservableProperty]
+        private ObservableCollection<User> users = [];
+
+
+        public AdminViewModel(IDataService dataService)
+        {
+            _dataService = dataService;
+            LoadUsersListCommand.Execute(null);
+        }
+
+
+        [RelayCommand]
+        private async Task LoadUsersList()
+        {
+            var usersData = await _dataService.GetUsersList();
+            Users = new ObservableCollection<User>(usersData);
+        }
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
     }
 }

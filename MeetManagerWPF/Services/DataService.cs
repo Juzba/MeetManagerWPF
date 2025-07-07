@@ -7,7 +7,10 @@ namespace MeetManagerWPF.Services
     public interface IDataService
     {
         Task<User?> GetUser(string userName);
+        Task<IEnumerable<User>> GetUsersList();
     }
+
+
 
     public class DataService(AppDbContext db) : IDataService
     {
@@ -15,10 +18,14 @@ namespace MeetManagerWPF.Services
 
 
 
-
+        // GET USER //
         public async Task<User?> GetUser(string userName)
         {
-            return await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Name.ToLower() == userName.ToLower());
+            return await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Name.Equals(userName));
         }
+
+        // GET USERSLIST //
+        public async Task<IEnumerable<User>> GetUsersList() => await _db.Users.Include(p => p.Role).ToListAsync();
+
     }
 }
