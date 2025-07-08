@@ -1,15 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MeetManagerWPF.Services;
+using MeetManagerWPF.View.Pages;
 using System.Windows;
 
 namespace MeetManagerWPF.ViewModel;
 
-public partial class LoginViewModel(IDataService dataService, UserStore userStore, IHashService hashService) : ObservableObject
+public partial class LoginViewModel(IDataService dataService, UserStore userStore, IHashService hashService, INavigation navigation) : ObservableObject
 {
     private readonly IDataService _dataService = dataService;
     private readonly UserStore _userStore = userStore;
     private readonly IHashService _hashService = hashService;
+    private readonly INavigation _navigation = navigation;
 
 
     // USERNAME //
@@ -51,6 +53,8 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
 
         _userStore.User = user;
         _userStore.IsUserLogged = true;
+
+        _navigation.NavigateToPage<HomePage>();
 
     }
 }

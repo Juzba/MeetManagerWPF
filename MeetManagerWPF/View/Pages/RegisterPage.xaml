@@ -8,15 +8,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:MeetManagerWPF.ViewModel"
     Title="RegisterPage"
-    d:DataContext="{d:DesignInstance Type=viewmodel:LoginViewModel}"
+    d:DataContext="{d:DesignInstance Type=viewmodel:RegisterViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    FontSize="30"
     mc:Ignorable="d">
 
     <Grid Background="#20448C">
 
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="100" />
+            <RowDefinition MinHeight="40" />
             <RowDefinition Height="330" />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -36,24 +38,41 @@
             Text="Register"
             TextAlignment="Center" />
 
-        <StackPanel
+        <TextBlock
             Grid.Row="1"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            FontSize="20"
+            Foreground="red"
+            Text="{Binding ErrorMessage}" />
+        
+        <StackPanel
+            Grid.Row="2"
             Grid.Column="1"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <UserControls:Input Margin="10" Placeholder="Jméno" />
+            VerticalAlignment="Top">
+            <UserControls:Input
+                Margin="10"
+                Placeholder="Jméno"
+                TextInp="{Binding UserName, Mode=TwoWay}" />
 
-            <UserControls:Input Margin="10" Placeholder="Heslo" />
+            <UserControls:Input
+                Margin="10"
+                Placeholder="Heslo"
+                TextInp="{Binding PasswordA, Mode=TwoWay}" />
 
 
-            <UserControls:Input Margin="10" Placeholder="Opakovat heslo" />
+            <UserControls:Input
+                Margin="10"
+                Placeholder="Opakovat heslo"
+                TextInp="{Binding PasswordB, Mode=TwoWay}" />
 
             <Button
                 Width="200"
                 Margin="20"
                 Background="#FFBC24"
+                Command="{Binding RegisterCommand}"
                 Content="Registrovat"
-                FontSize="30"
                 Foreground="#20448C" />
 
 

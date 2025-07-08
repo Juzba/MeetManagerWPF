@@ -26,14 +26,23 @@
             Text="Admin Page" />
 
         <DataGrid
-            ItemsSource="{Binding Users}"
             Grid.Row="1"
+            MaxWidth="600"
             Margin="10"
-            AutoGenerateColumns="True"
-            Background="#086CB4">
-            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-            <DataGridTextColumn Header="UserName" Binding="{Binding Name}" />
-            <DataGridTextColumn Header="Role" Binding="{Binding Role.RoleName}" />
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            AutoGenerateColumns="False"
+            Background="#086CB4"
+            ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Binding="{Binding Id}"
+                    Header="Id"
+                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="UserName" />
+                <DataGridTextColumn Binding="{Binding Role.RoleName, Mode=TwoWay}" Header="Role" />
+            </DataGrid.Columns>
+
         </DataGrid>
 
     </Grid>
