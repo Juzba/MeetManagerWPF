@@ -11,7 +11,7 @@
     Width="1000"
     Height="550"
     d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
-    FontSize="28"
+    FontSize="22"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -37,13 +37,26 @@
             Grid.Column="0"
             Orientation="Horizontal">
             <Button
-                Margin="15,0"
+                Margin="10,0"
                 Padding="10,5"
                 VerticalAlignment="Center"
                 Command="{Binding NavigateToHomePageCommand}"
                 Content="Home" />
             <Button
-                Margin="15,0"
+                Margin="10,0"
+                Padding="10,5"
+                VerticalAlignment="Center"
+                Command="{Binding NavigateToEventsPageCommand}"
+                Content="Events" />
+            <Button
+                Margin="10,0"
+                Padding="10,5"
+                VerticalAlignment="Center"
+                Command="{Binding NavigateToAddEventPageCommand}"
+                Visibility="{Binding ManagerPageVisibility}"
+                Content="Manager"/>
+            <Button
+                Margin="10,0"
                 Padding="10,5"
                 VerticalAlignment="Center"
                 Command="{Binding NavigateToAdminPageCommand}"
@@ -60,12 +73,12 @@
             Orientation="Horizontal">
 
             <TextBlock
-                Margin="20,0"
+                Margin="10,0"
                 VerticalAlignment="Center"
                 Text="{Binding UserName}"
                 Visibility="{Binding LoginVisibility, Converter={StaticResource BoolToVisibility}}" />
             <Button
-                Margin="15,0"
+                Margin="10,0"
                 Padding="10,5"
                 VerticalAlignment="Center"
                 Command="{Binding LogoutCommand}"
@@ -73,14 +86,14 @@
                 Visibility="{Binding LoginVisibility, Converter={StaticResource BoolToVisibility}}" />
 
             <Button
-                Margin="15,0"
+                Margin="10,0"
                 Padding="10,5"
                 VerticalAlignment="Center"
                 Command="{Binding NavigateToRegisterCommand}"
                 Content="Register"
                 Visibility="{Binding LoginVisibility, Converter={StaticResource InverseBoolToVisibility}}" />
             <Button
-                Margin="15,0"
+                Margin="10,0"
                 Padding="10,5"
                 VerticalAlignment="Center"
                 Command="{Binding NavigateToLoginCommand}"

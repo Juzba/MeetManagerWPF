@@ -45,7 +45,7 @@
             FontSize="20"
             Foreground="red"
             Text="{Binding ErrorMessage}" />
-        
+
         <StackPanel
             Grid.Row="2"
             Grid.Column="1"

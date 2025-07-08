@@ -44,12 +44,16 @@ namespace MeetManagerWPF
                 services.AddTransient<RegisterViewModel>();
                 services.AddTransient<AdminViewModel>();
                 services.AddTransient<HomeViewModel>();
+                services.AddTransient<ManagerViewModel>();
+                services.AddTransient<EventsViewModel>();
 
                 //  WIEV
                 services.AddTransient<LoginPage>();
                 services.AddTransient<RegisterPage>();
                 services.AddTransient<AdminPage>();
                 services.AddTransient<HomePage>();
+                services.AddTransient<ManagerPage>();
+                services.AddTransient<EventsPage>();
 
 
             }).Build();
