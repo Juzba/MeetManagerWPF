@@ -3,8 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using MeetManagerWPF.Model;
 using MeetManagerWPF.Services;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Windows;
 
 namespace MeetManagerWPF.ViewModel
 {
@@ -16,7 +14,6 @@ namespace MeetManagerWPF.ViewModel
         {
             _dataService = dataService;
             LoadUsersListCommand.Execute(null);
-            Users.CollectionChanged += Users_CollectionChanged;
         }
 
 
@@ -36,12 +33,18 @@ namespace MeetManagerWPF.ViewModel
         }
 
 
+        // SAVE CHANGES //
+        [RelayCommand]
+        private async Task SaveChanges() => await _dataService.UpdateUsersList();
 
-        private void Users_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs? e)
+
+        // DELETE USER //
+        [RelayCommand]
+        private async Task DeleteUser()
         {
-            MessageBox.Show("");
-        }
 
+        }
+     
 
 
 

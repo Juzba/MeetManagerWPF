@@ -11,6 +11,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontSize="30"
+    Foreground="#FFD340"
     mc:Ignorable="d">
 
     <Grid Background="#20448C">
@@ -18,6 +19,23 @@
             <RowDefinition Height="20*" />
             <RowDefinition Height="80*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*" />
+            <ColumnDefinition Width="25*" />
+        </Grid.ColumnDefinitions>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Height="50"
+            Margin="0"
+            Padding="10,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Command="{Binding SaveChangesCommand}"
+            Content="Uložit změny"
+            FontSize="25"
+            Foreground="#20448C" />
 
         <TextBlock
             HorizontalAlignment="Center"
@@ -28,22 +46,37 @@
         <DataGrid
             Grid.Row="1"
             MaxWidth="600"
-            Margin="10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            Margin="20,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             AutoGenerateColumns="False"
             Background="#086CB4"
             ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn
+                    MinWidth="70"
                     Binding="{Binding Id}"
                     Header="Id"
                     IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Name}" Header="UserName" />
-                <DataGridTextColumn Binding="{Binding Role.RoleName, Mode=TwoWay}" Header="Role" />
+                <DataGridTextColumn
+                    MinWidth="200"
+                    Binding="{Binding Name}"
+                    Header="UserName" />
+                <DataGridTextColumn
+                    MinWidth="140"
+                    Binding="{Binding Role.RoleName, Mode=TwoWay}"
+                    Header="Role" />
+                <DataGridTemplateColumn MinWidth="80" Header="Akce">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding}"
+                                Content="Smazat" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
-
         </DataGrid>
-
     </Grid>
 </Page>

@@ -9,6 +9,7 @@ namespace MeetManagerWPF.Services
         Task AddUser(User user);
         Task<User?> GetUser(string userName);
         Task<IEnumerable<User>> GetUsersList();
+        Task UpdateUsersList();
     }
 
 
@@ -33,12 +34,15 @@ namespace MeetManagerWPF.Services
         }
 
 
-        // GET USERSLIST //
+        // GET USERS LIST //
         public async Task<IEnumerable<User>> GetUsersList() => await _db.Users.Include(p => p.Role).ToListAsync();
 
 
-
-
+        // UPDATE USERS LIST //
+        public async Task UpdateUsersList()
+        {
+            await _db.SaveChangesAsync();
+        }
 
 
     }
