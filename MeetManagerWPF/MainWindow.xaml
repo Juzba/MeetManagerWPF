@@ -5,6 +5,7 @@
     xmlns:converters="clr-namespace:MeetManagerWPF.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MeetManagerWPF"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:MeetManagerWPF.ViewModel"
     Title="MainWindow"
@@ -41,7 +42,8 @@
                 Padding="10,5"
                 VerticalAlignment="Center"
                 Command="{Binding NavigateToHomePageCommand}"
-                Content="Home" />
+                Content="Home"
+                Style="{StaticResource MaterialDesignRaisedButton}" />
             <Button
                 Margin="10,0"
                 Padding="10,5"
