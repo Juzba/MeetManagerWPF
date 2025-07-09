@@ -17,7 +17,7 @@
     <Grid Background="#20448C">
 
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="100" />
+            <RowDefinition MinHeight="90" />
             <RowDefinition MinHeight="40" />
             <RowDefinition Height="330" />
             <RowDefinition />
@@ -25,17 +25,17 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition MinWidth="330" />
+            <ColumnDefinition MinWidth="400" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <TextBlock
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            Margin="0,0,0,15"
             FontSize="60"
             Foreground="#FFBC24"
             Text="Register"
+            VerticalAlignment="Top"
             TextAlignment="Center" />
 
         <TextBlock
@@ -52,24 +52,30 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top">
             <UserControls:Input
+                Width="350"
                 Margin="10"
                 Placeholder="Email"
                 TextInp="{Binding Email, Mode=TwoWay}" />
 
             <UserControls:Input
+                Width="350"
                 Margin="10"
                 Placeholder="Heslo"
                 TextInp="{Binding PasswordA, Mode=TwoWay}" />
 
 
             <UserControls:Input
+                Width="350"
                 Margin="10"
                 Placeholder="Opakovat heslo"
                 TextInp="{Binding PasswordB, Mode=TwoWay}" />
 
             <Button
                 Width="200"
+                Height="50"
+                HorizontalAlignment="Center"
                 Margin="20"
+                FontSize="30"
                 Background="#FFBC24"
                 Command="{Binding RegisterCommand}"
                 Content="Registrovat"

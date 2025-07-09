@@ -52,8 +52,14 @@ namespace MeetManagerWPF.ViewModel
                 return;
             }
 
+            if (await _dataService.GetUser(Email) != null)
+            {
+                ErrorMessage = "Uživatel s tímto emailem již existuje.";
+                return;
+            }
+
             var hash = _hashService.HashPassword(PasswordA);
-            var newUser = new User() { Email = Email, PasswordHash = hash };
+            var newUser = new User() {Name= Email, Email = Email, PasswordHash = hash };
 
             await _dataService.AddUser(newUser);
 

@@ -35,7 +35,7 @@
             Command="{Binding SaveChangesCommand}"
             Content="Uložit změny"
             FontSize="25"
-            Foreground="#20448C" />
+            Foreground="#FFBC24" />
 
         <TextBlock
             HorizontalAlignment="Center"
@@ -45,9 +45,9 @@
 
         <DataGrid
             Grid.Row="1"
-            MaxWidth="600"
+            
             Margin="20,0"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             Background="#086CB4"
@@ -59,9 +59,13 @@
                     Header="Id"
                     IsReadOnly="True" />
                 <DataGridTextColumn
-                    MinWidth="200"
+                    MinWidth="150"
                     Binding="{Binding Name}"
                     Header="UserName" />
+                <DataGridTextColumn
+                    MinWidth="150"
+                    Binding="{Binding Email}"
+                    Header="Email" />
                 <DataGridTextColumn
                     MinWidth="140"
                     Binding="{Binding Role.RoleName, Mode=TwoWay}"

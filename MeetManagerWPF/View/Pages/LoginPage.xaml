@@ -23,7 +23,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition MinWidth="330" />
+            <ColumnDefinition MinWidth="400" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -42,17 +42,21 @@
             VerticalAlignment="Center">
 
             <UserControls:Input
+                Width="350"
                 Margin="10"
                 Placeholder="Email"
                 TextInp="{Binding Email, Mode=TwoWay}" />
 
             <UserControls:Input
+                Width="350"
                 Margin="10"
                 Placeholder="Heslo"
                 TextInp="{Binding Password, Mode=TwoWay}" />
 
             <Button
                 Width="200"
+                Height="50"
+                HorizontalAlignment="Center"
                 Margin="20"
                 Background="#FFBC24"
                 Command="{Binding LoginCommand}"
