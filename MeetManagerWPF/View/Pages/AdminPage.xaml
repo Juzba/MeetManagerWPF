@@ -45,12 +45,13 @@
 
         <DataGrid
             Grid.Row="1"
-            
             Margin="20,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             Background="#086CB4"
+            FontSize="17"
+            Foreground="#FFD340"
             ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn
@@ -74,9 +75,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-                                Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                CommandParameter="{Binding}"
-                                Content="Smazat" />
+                                Content="Smazat"
+                                Command="{Binding DataContext.RemoveUserCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding   }" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -32,10 +32,10 @@
         <TextBlock
             Grid.Column="0"
             Grid.ColumnSpan="3"
+            VerticalAlignment="Top"
             FontSize="60"
             Foreground="#FFBC24"
             Text="Register"
-            VerticalAlignment="Top"
             TextAlignment="Center" />
 
         <TextBlock
@@ -73,12 +73,12 @@
             <Button
                 Width="200"
                 Height="50"
-                HorizontalAlignment="Center"
                 Margin="20"
-                FontSize="30"
+                HorizontalAlignment="Center"
                 Background="#FFBC24"
                 Command="{Binding RegisterCommand}"
                 Content="Registrovat"
+                FontSize="30"
                 Foreground="#20448C" />
 
 
