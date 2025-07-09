@@ -9,10 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Changes.txt" />
     <None Remove="Info.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Task.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Changes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Info.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
