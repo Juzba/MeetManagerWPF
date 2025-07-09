@@ -43,6 +43,9 @@
             Foreground="#FFBC24"
             Text="Admin Page" />
 
+
+
+
         <DataGrid
             Grid.Row="1"
             Margin="20,0"
@@ -50,9 +53,12 @@
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             Background="#086CB4"
+            CanUserAddRows="False"
             FontSize="17"
             Foreground="#FFD340"
-            ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectionMode="Single"
+            SelectionUnit="Cell">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     MinWidth="70"
@@ -67,17 +73,30 @@
                     MinWidth="150"
                     Binding="{Binding Email}"
                     Header="Email" />
-                <DataGridTextColumn
-                    MinWidth="140"
-                    Binding="{Binding Role.RoleName, Mode=TwoWay}"
-                    Header="Role" />
+
+                <DataGridTemplateColumn MinWidth="140" Header="Role">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Role.RoleName}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox
+                                ItemsSource="{Binding DataContext.RoleList, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                Loaded="ComboBox_Loaded"
+                                SelectedItem="{Binding Role.RoleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn MinWidth="80" Header="Akce">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-                                Content="Smazat"
                                 Command="{Binding DataContext.RemoveUserCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                CommandParameter="{Binding   }" />
+                                CommandParameter="{Binding}"
+                                Content="Smazat" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -7,6 +7,7 @@ namespace MeetManagerWPF.Services
     public interface IDataService
     {
         Task AddUser(User user);
+        Task DeleteUser(User user);
         Task<User?> GetUser(string email);
         Task<IEnumerable<User>> GetUsersList();
         Task UpdateUsersList();
@@ -23,6 +24,13 @@ namespace MeetManagerWPF.Services
         public async Task AddUser(User user)
         {
             await _db.Users.AddAsync(user);
+            await _db.SaveChangesAsync();
+        }
+
+        // DELETE USER //
+        public async Task DeleteUser(User user)
+        {
+            _db.Users.Remove(user);
             await _db.SaveChangesAsync();
         }
 

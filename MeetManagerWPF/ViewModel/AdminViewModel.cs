@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using MeetManagerWPF.Model;
 using MeetManagerWPF.Services;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace MeetManagerWPF.ViewModel
@@ -17,14 +16,14 @@ namespace MeetManagerWPF.ViewModel
         {
             _dataService = dataService;
             LoadUsersListCommand.Execute(null);
-            RemoveUserCmd = new RelayCommand<object?>(RemoveUser);
+            RemoveUserCmd = new AsyncRelayCommand<object?>(RemoveUser);
         }
 
 
         [ObservableProperty]
         private ObservableCollection<User> users = [];
 
-
+        public ObservableCollection<string> RoleList { get; } = ["Admin", "Manager", "User"];
 
 
 
@@ -43,17 +42,16 @@ namespace MeetManagerWPF.ViewModel
 
 
 
-
+        // REMOVE USER //
         [RelayCommand]
-        private void RemoveUser(object? param)
+        private async Task RemoveUser(object? param)
         {
             if (param is not User user) return;
 
-            MessageBox.Show(user.Name);
-
-
+            await _dataService.DeleteUser(user);
+            LoadUsersListCommand.Execute(null);
         }
-     
+
 
 
 

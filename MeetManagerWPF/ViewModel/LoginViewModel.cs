@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using MeetManagerWPF.Services;
 using MeetManagerWPF.View.Pages;
-using System.Windows;
 
 namespace MeetManagerWPF.ViewModel;
 
@@ -12,6 +11,10 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
     private readonly UserStore _userStore = userStore;
     private readonly IHashService _hashService = hashService;
     private readonly INavigation _navigation = navigation;
+
+    // ERROR MESSAGE //
+    [ObservableProperty]
+    private string? errorMessage;
 
 
     // USERNAME //
@@ -23,23 +26,22 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
     // PASSWORD //
     [ObservableProperty]
     private string? password;
-  
+
 
 
     // LOGIN COMMAND //
     [RelayCommand]
     private async Task Login()
     {
-        // INSTANT LOGIN //
-        Email = "Juzba@gmail.com"; // delete this
+        ErrorMessage = "";
 
-
-        var user = await _dataService.GetUser(Email);
-        //if (user == null || !_hashService.VerifyPassword(_password, user.PasswordHash))
-        //{
-        //    Password = "";
-        //    return;
-        //}
+        var user = await _dataService.GetUser(Email ?? "");
+        if (user == null || !_hashService.VerifyPassword(Password ?? "", user.PasswordHash))
+        {
+            ErrorMessage = "Chyba přihlášení !!";
+            Password = "";
+            return;
+        }
 
         // LOGIN CONFIRMED
         Email = "";
@@ -49,6 +51,20 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
         _userStore.IsUserLogged = true;
 
         _navigation.NavigateToPage<HomePage>();
+    }
+
+
+    // INSTANT ACCESS //
+    [RelayCommand]
+    private async Task InstaAccess()
+    {
+        var user = await _dataService.GetUser("Juzba@gmail.com");
+
+        if (user == null) return;
+        _userStore.User = user;
+        _userStore.IsUserLogged = true;
+
+        _navigation.NavigateToPage<AdminPage>();
 
     }
 }
