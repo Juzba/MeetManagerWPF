@@ -33,14 +33,14 @@ namespace MeetManagerWPF.ViewModel
                     UserName = $"{_userStore.User?.Name ?? "UserName"}";
 
                     // Role Admin? Show page for admin
-                    if (_userStore.User?.Role.RoleName == "Admin")
+                    if (_userStore.User?.Role?.RoleName == "Admin")
                     {
                         AdminPageVisibility = Visibility.Visible;
                         ManagerPageVisibility = Visibility.Visible;
                     }
 
                     // Role Manager? Show page for manager
-                    if (_userStore.User?.Role.RoleName == "Manager") ManagerPageVisibility = Visibility.Visible;
+                    if (_userStore.User?.Role?.RoleName == "Manager") ManagerPageVisibility = Visibility.Visible;
 
                 }
             };

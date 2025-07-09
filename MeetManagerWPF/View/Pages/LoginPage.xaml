@@ -43,8 +43,8 @@
 
             <UserControls:Input
                 Margin="10"
-                Placeholder="Jméno"
-                TextInp="{Binding UserName, Mode=TwoWay}" />
+                Placeholder="Email"
+                TextInp="{Binding Email, Mode=TwoWay}" />
 
             <UserControls:Input
                 Margin="10"

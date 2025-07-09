@@ -6,6 +6,6 @@
         public string RoleName { get; set; } = string.Empty;
 
         // Users
-        public IEnumerable<User> Users { get; set; } = [];
+        public ICollection<User> Users { get; set; } = [];
     }
 }

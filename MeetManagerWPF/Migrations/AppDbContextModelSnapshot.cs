@@ -32,7 +32,7 @@ namespace MeetManagerWPF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
 
                     b.HasData(
                         new
@@ -60,6 +60,10 @@ namespace MeetManagerWPF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -82,6 +86,7 @@ namespace MeetManagerWPF.Migrations
                         new
                         {
                             Id = 1,
+                            Email = "Juzba@gmail.com",
                             Name = "Juzba",
                             PasswordHash = "$argon2id$v=19$m=65536,t=3,p=1$+g3wENe8VfgrJvTd4E9YNQ$zvtCx0lwFdXwvR6DLKTOH6FJzm8rB6y54wSEpXbIkJk",
                             RoleId = "AdminRoleId-51sa9-sdd18"
@@ -89,6 +94,7 @@ namespace MeetManagerWPF.Migrations
                         new
                         {
                             Id = 2,
+                            Email = "Katka@gmail.com",
                             Name = "Katka",
                             PasswordHash = "$argon2id$v=19$m=65536,t=3,p=1$VSs65qBpJTKEJSTb7qXkAw$fBlpCgya4Z9LRmKnhUFzXh7tqnXrWSl2vyHkNCwEKCg",
                             RoleId = "ManagerRoleId-21ga5-sda13"
@@ -96,6 +102,7 @@ namespace MeetManagerWPF.Migrations
                         new
                         {
                             Id = 3,
+                            Email = "Karel@gmail.com",
                             Name = "Karel",
                             PasswordHash = "$argon2id$v=19$m=65536,t=3,p=1$tyqbuA8MlWrR6ZE7pWMioA$wjo5b2y+qFdDrbr23ymFvKi9xv2W55g1uvX/3T0z9/s",
                             RoleId = "UserRoleId-54sa9-sda87"

@@ -14,6 +14,6 @@ namespace MeetManagerWPF.Model
         public string Location { get; set; } = string.Empty;
 
         // Events
-        public IEnumerable<Event> Events { get; set; } = [];
+        public ICollection<Event> Events { get; set; } = [];
     }
 }

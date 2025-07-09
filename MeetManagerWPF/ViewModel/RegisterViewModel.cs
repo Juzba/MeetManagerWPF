@@ -23,7 +23,7 @@ namespace MeetManagerWPF.ViewModel
 
         // USERNAME //
         [ObservableProperty]
-        private string? userName;
+        private string? email;
 
 
         // PASSWORD //
@@ -46,21 +46,21 @@ namespace MeetManagerWPF.ViewModel
         [RelayCommand]
         private async Task Register()
         {
-            if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrEmpty(PasswordA) || !PasswordA.Equals(PasswordB))
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrEmpty(PasswordA) || !PasswordA.Equals(PasswordB))
             {
-                ErrorMessage = "Chybí jméno nebo obě hesla nejsou stejná.";
+                ErrorMessage = "Chybí email nebo obě hesla nejsou stejná.";
                 return;
             }
 
             var hash = _hashService.HashPassword(PasswordA);
-            var newUser = new User() { Name = UserName, PasswordHash = hash };
+            var newUser = new User() { Email = Email, PasswordHash = hash };
 
             await _dataService.AddUser(newUser);
 
             ErrorMessage = "";
             PasswordA = "";
             PasswordB = "";
-            UserName = "";
+            Email = "";
 
             _navigation.NavigateToPage<LoginPage>();
         }

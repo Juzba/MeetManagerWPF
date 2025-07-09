@@ -15,21 +15,15 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
 
 
     // USERNAME //
-    private string _userName = "";
-    public string UserName
-    {
-        get { return _userName; }
-        set { SetProperty(ref _userName, value); }
-    }
+    [ObservableProperty]
+    private string? email;
+
 
 
     // PASSWORD //
-    private string _password = "";
-    public string Password
-    {
-        get => _password;
-        set { SetProperty(ref _password, value); }
-    }
+    [ObservableProperty]
+    private string? password;
+  
 
 
     // LOGIN COMMAND //
@@ -37,10 +31,10 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
     private async Task Login()
     {
         // INSTANT LOGIN //
-        _userName = "Juzba"; // delete this
+        Email = "Juzba@gmail.com"; // delete this
 
 
-        var user = await _dataService.GetUser(_userName);
+        var user = await _dataService.GetUser(Email);
         //if (user == null || !_hashService.VerifyPassword(_password, user.PasswordHash))
         //{
         //    Password = "";
@@ -48,7 +42,7 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
         //}
 
         // LOGIN CONFIRMED
-        UserName = "";
+        Email = "";
         Password = "";
 
         _userStore.User = user;

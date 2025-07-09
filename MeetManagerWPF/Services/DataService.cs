@@ -7,7 +7,7 @@ namespace MeetManagerWPF.Services
     public interface IDataService
     {
         Task AddUser(User user);
-        Task<User?> GetUser(string userName);
+        Task<User?> GetUser(string email);
         Task<IEnumerable<User>> GetUsersList();
         Task UpdateUsersList();
     }
@@ -28,9 +28,9 @@ namespace MeetManagerWPF.Services
 
 
         // GET USER //
-        public async Task<User?> GetUser(string userName)
+        public async Task<User?> GetUser(string email)
         {
-            return await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Name.Equals(userName));
+            return await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Email == email);
         }
 
 

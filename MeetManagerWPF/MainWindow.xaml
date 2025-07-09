@@ -43,7 +43,7 @@
                 VerticalAlignment="Center"
                 Command="{Binding NavigateToHomePageCommand}"
                 Content="Home"
-                Style="{StaticResource MaterialDesignRaisedButton}" />
+                 />
             <Button
                 Margin="10,0"
                 Padding="10,5"

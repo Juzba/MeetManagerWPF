@@ -12,7 +12,7 @@ namespace MeetManagerWPF.Model
         public string Name { get; set; } = string.Empty;
 
         // Events
-        public IEnumerable<Event> Events { get; set; } = [];
+        public ICollection<Event> Events { get; set; } = [];
        
     }
 }
