@@ -14,5 +14,14 @@ namespace MeetManagerWPF.Model
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
+
+        // EVENT TYPE //
+        public int EventTypeId { get; set; }
+        public EventType EventType { get; set; } = null!;
+
+        // ROOM //
+
+        public int RoomID { get; set; }
+        public Room Room { get; set; } = null!;
     }
 }

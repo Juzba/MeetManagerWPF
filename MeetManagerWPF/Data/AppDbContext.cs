@@ -8,6 +8,13 @@ namespace MeetManagerWPF.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
 
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<Invitation> Invitations { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+
+
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 

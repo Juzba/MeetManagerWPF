@@ -13,6 +13,9 @@
         // User
         public int UserId { get; set; }
         public User User { get; set; } = default!;
+
+        // User Participants
+        public ICollection<User> Participants { get; set; } = [];
     }
 
 
