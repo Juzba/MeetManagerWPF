@@ -10,10 +10,13 @@
 
   <ItemGroup>
     <None Remove="Changes.txt" />
-    <None Remove="Info.txt" />
+    <None Remove="MeetUpAPP-UseCaseDiagram.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="MeetUpAPP-UseCaseDiagram.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Task.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -23,7 +26,7 @@
     <Content Include="Changes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Info.txt">
+    <Content Include="Colors.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

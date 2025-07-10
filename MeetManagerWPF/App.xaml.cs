@@ -2,7 +2,9 @@
 using MeetManagerWPF.Services;
 using MeetManagerWPF.View;
 using MeetManagerWPF.View.Pages;
+using MeetManagerWPF.View.Pages.Manager;
 using MeetManagerWPF.ViewModel;
+using MeetManagerWPF.ViewModel.Manager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -46,6 +48,7 @@ namespace MeetManagerWPF
                 services.AddTransient<HomeViewModel>();
                 services.AddTransient<ManagerViewModel>();
                 services.AddTransient<EventsViewModel>();
+                services.AddTransient<CreateEventViewModel>();
 
                 //  WIEV
                 services.AddTransient<LoginPage>();
@@ -54,6 +57,7 @@ namespace MeetManagerWPF
                 services.AddTransient<HomePage>();
                 services.AddTransient<ManagerPage>();
                 services.AddTransient<EventsPage>();
+                services.AddTransient<CreateEventPage>();
 
 
             }).Build();

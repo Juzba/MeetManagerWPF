@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MeetManagerWPF.ViewModel
+namespace MeetManagerWPF.ViewModel.Manager
 {
-    public partial class ManagerViewModel: ObservableObject
+    public class CreateEventViewModel: ObservableObject
     {
     }
 }
