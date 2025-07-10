@@ -20,17 +20,21 @@ namespace MeetManagerWPF.ViewModel
         }
 
 
+
+        [ObservableProperty]
+        public ObservableCollection<Role> roleList = [new Role { Id = "AdminRoleId-51sa9-sdd18", RoleName = "Admin" }, new Role { Id = "UserRoleId-54sa9-sda87", RoleName = "User" }, new Role { Id = "ManagerRoleId-21ga5-sda13", RoleName = "Manager" }];
+
+
+
         [ObservableProperty]
         private ObservableCollection<User> users = [];
 
-        public ObservableCollection<string> RoleList { get; } = ["Admin", "Manager", "User"];
-
-
-
+        // LOAD DATA //
         [RelayCommand]
         private async Task LoadUsersList()
         {
-            var usersData = await _dataService.GetUsersList();
+           var usersData = await _dataService.GetUsersList();
+        
             Users = new ObservableCollection<User>(usersData);
 
         }
@@ -38,7 +42,10 @@ namespace MeetManagerWPF.ViewModel
 
         // SAVE CHANGES //
         [RelayCommand]
-        private async Task SaveChanges() => await _dataService.UpdateUsersList();
+        private async Task SaveChanges()
+        {
+            await _dataService.UpdateUsersList();
+        }
 
 
 

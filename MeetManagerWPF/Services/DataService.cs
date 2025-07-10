@@ -43,7 +43,10 @@ namespace MeetManagerWPF.Services
 
 
         // GET USERS LIST //
-        public async Task<IEnumerable<User>> GetUsersList() => await _db.Users.Include(p => p.Role).ToListAsync();
+        public async Task<IEnumerable<User>> GetUsersList()
+        {
+            return await _db.Users.Include(p => p.Role).ToListAsync();
+        }
 
 
         // UPDATE USERS LIST //
