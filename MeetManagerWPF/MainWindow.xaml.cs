@@ -1,5 +1,9 @@
-﻿using MeetManagerWPF.View;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using MeetManagerWPF.Services;
+using MeetManagerWPF.View;
 using MeetManagerWPF.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,10 +22,19 @@ namespace MeetManagerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(MainViewModel mainViewModel)
+        private readonly IHost _host;
+
+        public MainWindow(MainViewModel mainViewModel, IHost host)
         {
             InitializeComponent();
             DataContext = mainViewModel;
+            _host = host;
+
+            WeakReferenceMessenger.Default.Register<NavigateMessage>(this, (r, m) =>
+            {
+                var page = (Page)_host.Services.GetRequiredService(m.Value)!;
+                FrameMW.Navigate(page);
+            });
         }
 
     }

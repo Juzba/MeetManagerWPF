@@ -11,20 +11,19 @@ using System.Threading.Tasks;
 
 namespace MeetManagerWPF.ViewModel.Manager
 {
-    public partial class ManagerViewModel(INavigation navigation) : ObservableObject
+    public partial class ManagerViewModel() : ObservableObject
     {
-        private readonly INavigation _navigation = navigation;
 
         [RelayCommand]
         private void NavigateToNewEvent()
         {
-            _navigation.NavigateToPageTwo<CreateEventPage>();
+            //_navigation.NavigateToPageTwo<CreateEventPage>();
         }
 
         [RelayCommand]
         private void NavigateToSeznam()
         {
-            _navigation.NavigateToPageTwo<CreateEventPage>();
+            //_navigation.NavigateToPageTwo<CreateEventPage>();
         }
 
 

@@ -1,6 +1,5 @@
 ﻿using MeetManagerWPF.Data;
 using MeetManagerWPF.Services;
-using MeetManagerWPF.View;
 using MeetManagerWPF.View.Pages;
 using MeetManagerWPF.View.Pages.Manager;
 using MeetManagerWPF.ViewModel;
@@ -8,9 +7,6 @@ using MeetManagerWPF.ViewModel.Manager;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Configuration;
-using System.Data;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MeetManagerWPF
@@ -29,10 +25,12 @@ namespace MeetManagerWPF
             AppHost = Host.CreateDefaultBuilder().ConfigureServices((_, services) =>
             {
                 services.AddSingleton<MainWindow>();
-                services.AddSingleton<INavigation, Navigation>();
                 services.AddSingleton<UserStore>();
-                services.AddTransient<IDataService ,DataService>();
-                services.AddTransient<IHashService,HashService>();
+
+                services.AddTransient<NavigateMessage>();
+                services.AddTransient<INavigationService, NavigationService>();
+                services.AddTransient<IDataService, DataService>();
+                services.AddTransient<IHashService, HashService>();
 
                 // DB
                 services.AddDbContext<AppDbContext>(options =>

@@ -5,12 +5,12 @@ using MeetManagerWPF.View.Pages;
 
 namespace MeetManagerWPF.ViewModel;
 
-public partial class LoginViewModel(IDataService dataService, UserStore userStore, IHashService hashService, INavigation navigation) : ObservableObject
+public partial class LoginViewModel(IDataService dataService, UserStore userStore, IHashService hashService, INavigationService navigation) : ObservableObject
 {
     private readonly IDataService _dataService = dataService;
     private readonly UserStore _userStore = userStore;
     private readonly IHashService _hashService = hashService;
-    private readonly INavigation _navigation = navigation;
+    private readonly INavigationService _navigation = navigation;
 
     // ERROR MESSAGE //
     [ObservableProperty]
@@ -50,7 +50,7 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
         _userStore.User = user;
         _userStore.IsUserLogged = true;
 
-        _navigation.NavigateToPage<HomePage>();
+        _navigation.NavigateTo<HomePage>();
     }
 
 
@@ -64,7 +64,7 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
         _userStore.User = user;
         _userStore.IsUserLogged = true;
 
-        _navigation.NavigateToPage<AdminPage>();
+        _navigation.NavigateTo<AdminPage>();
 
     }
 }

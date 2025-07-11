@@ -3,18 +3,19 @@ using CommunityToolkit.Mvvm.Input;
 using MeetManagerWPF.Services;
 using MeetManagerWPF.View.Pages;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace MeetManagerWPF.ViewModel
 {
     public partial class MainViewModel : ObservableObject
     {
-        private readonly INavigation _navigation;
+        private readonly INavigationService _navigation;
         private readonly UserStore _userStore;
 
-        public MainViewModel(INavigation navigation, UserStore userStore)
+        public MainViewModel( INavigationService navigation, UserStore userStore)
         {
-            _navigation = navigation;
             _userStore = userStore;
+            _navigation = navigation;
 
             OnLogin();
         }
@@ -67,7 +68,7 @@ namespace MeetManagerWPF.ViewModel
         {
             _userStore.IsUserLogged = false;
             _userStore.User = null;
-            _navigation.NavigateToPage<LoginPage>();
+            _navigation.NavigateTo<LoginPage>();
             AdminPageVisibility = Visibility.Collapsed;
             ManagerPageVisibility = Visibility.Collapsed;
         }
@@ -79,29 +80,36 @@ namespace MeetManagerWPF.ViewModel
 
         // TO LOGIN PAGE //
         [RelayCommand]
-        private void NavigateToLogin() => _navigation.NavigateToPage<LoginPage>();
+        private void NavigateToLogin()
+        {
+            _navigation.NavigateTo<LoginPage>();
+        }
 
         // TO REGISTER PAGE //
         [RelayCommand]
-        private void NavigateToRegister() => _navigation.NavigateToPage<RegisterPage>();
+        private void NavigateToRegister()
+        {
+            _navigation.NavigateTo<RegisterPage>();
+        }
 
         // TO HOME PAGE //
         [RelayCommand]
-        private void NavigateToHomePage() => _navigation.NavigateToPage<HomePage>();
+        private void NavigateToHomePage() => _navigation.NavigateTo<HomePage>();
 
         // TO EVENTS PAGE //
         [RelayCommand]
-        private void NavigateToEventsPage() => _navigation.NavigateToPage<EventsPage>();
+        private void NavigateToEventsPage() => _navigation.NavigateTo<EventsPage>();
+
         // TO ADD EVENT PAGE //
         [RelayCommand]
-        private void NavigateToAddEventPage() => _navigation.NavigateToPage<ManagerPage>();
+        private void NavigateToAddEventPage() => _navigation.NavigateTo<ManagerPage>();
 
         // TO ADMIN PAGE //
         [RelayCommand]
         private void NavigateToAdminPage()
         {
             if (_userStore.User?.Role.RoleName == "Admin")
-                _navigation.NavigateToPage<AdminPage>();
+                _navigation.NavigateTo<AdminPage>();
         }
 
         // LOGOUT //

@@ -13,10 +13,8 @@ namespace MeetManagerWPF.View.Pages
         public ManagerPage(ManagerViewModel managerViewModel)
         {
             InitializeComponent();
-            var navigationService = App.AppHost.Services.GetRequiredService<INavigation>();
-
-
             DataContext = managerViewModel;
+
         }
     }
 }

@@ -10,9 +10,9 @@ namespace MeetManagerWPF.ViewModel
     {
         private readonly IHashService _hashService;
         private readonly IDataService _dataService;
-        private readonly INavigation _navigation;
+        private readonly INavigationService _navigation;
 
-        public RegisterViewModel(IHashService hashService, IDataService dataService, INavigation navigation)
+        public RegisterViewModel(IHashService hashService, IDataService dataService, INavigationService navigation)
         {
             _hashService = hashService;
             _dataService = dataService;
@@ -59,7 +59,7 @@ namespace MeetManagerWPF.ViewModel
             }
 
             var hash = _hashService.HashPassword(PasswordA);
-            var newUser = new User() {Name= Email, Email = Email, PasswordHash = hash };
+            var newUser = new User() { Name = Email, Email = Email, PasswordHash = hash };
 
             await _dataService.AddUser(newUser);
 
@@ -68,7 +68,7 @@ namespace MeetManagerWPF.ViewModel
             PasswordB = "";
             Email = "";
 
-            _navigation.NavigateToPage<LoginPage>();
+            _navigation.NavigateTo<LoginPage>();
         }
     }
 }
