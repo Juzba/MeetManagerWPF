@@ -3,17 +3,18 @@
 namespace MeetManagerWPF.Services
 {
 
-    public interface INavigationService
+    public interface INavigationService 
     {
-        void NavigateTo<TPage>();
+        void NavigateTo<TPage>(string frameName = Constants.FrameMainVindow);
     }
 
 
     public class NavigationService : INavigationService
     {
-        public void NavigateTo<TPage>()
+
+        public void NavigateTo<TPage>(string frameName = Constants.FrameMainVindow)
         {
-            WeakReferenceMessenger.Default.Send(new NavigateMessage(typeof(TPage)));
+            WeakReferenceMessenger.Default.Send(new NavigateMessage(typeof(TPage), frameName));
         }
     }
 }

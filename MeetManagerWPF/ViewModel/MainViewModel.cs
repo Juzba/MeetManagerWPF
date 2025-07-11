@@ -80,17 +80,11 @@ namespace MeetManagerWPF.ViewModel
 
         // TO LOGIN PAGE //
         [RelayCommand]
-        private void NavigateToLogin()
-        {
-            _navigation.NavigateTo<LoginPage>();
-        }
+        private void NavigateToLogin() => _navigation.NavigateTo<LoginPage>();
 
         // TO REGISTER PAGE //
         [RelayCommand]
-        private void NavigateToRegister()
-        {
-            _navigation.NavigateTo<RegisterPage>();
-        }
+        private void NavigateToRegister() => _navigation.NavigateTo<RegisterPage>();
 
         // TO HOME PAGE //
         [RelayCommand]
