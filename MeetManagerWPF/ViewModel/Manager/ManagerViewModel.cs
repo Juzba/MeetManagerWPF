@@ -19,11 +19,11 @@ namespace MeetManagerWPF.ViewModel.Manager
         [RelayCommand]
         private void NavigateToNewEvent()
         {
-            _navigation.NavigateTo<CreateEventPage>(Constants.FrameManager);
+            _navigation.NavigateTo<CreateEventPage>(Constants.FrameManagerView);
         }
 
         [RelayCommand]
-        private void NavigateToSeznam() => _navigation.NavigateTo<CreateEventPage>(Constants.FrameManager);
+        private void NavigateToSeznam() => _navigation.NavigateTo<CreateEventPage>(Constants.FrameManagerView);
 
 
 

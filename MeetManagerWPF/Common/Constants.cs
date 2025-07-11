@@ -2,13 +2,7 @@
 {
     public static class Constants
     {
-        public const string FrameMainVindow = "FrameMainVindow";
-        public const string FrameManager = "FrameManager";
-
-
-
-
-
-
+        public const string FrameMainVindowView = "FrameMainVindowView";
+        public const string FrameManagerView = "FrameManagerView";
     }
 }

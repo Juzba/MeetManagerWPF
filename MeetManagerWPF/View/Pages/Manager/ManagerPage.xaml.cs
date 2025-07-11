@@ -22,7 +22,7 @@ namespace MeetManagerWPF.View.Pages
 
             WeakReferenceMessenger.Default.Register<NavigateMessage>(this, (r, m) =>
             {
-                if (m.FrameName == Constants.FrameManager)
+                if (m.FrameName == Constants.FrameManagerView)
                 {
                     var page = (Page)_host.Services.GetRequiredService(m.PageType)!;
                     FrameManagerWiew.Navigate(page);

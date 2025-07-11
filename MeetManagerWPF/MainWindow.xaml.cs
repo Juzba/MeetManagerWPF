@@ -24,7 +24,7 @@ public partial class MainWindow : Window
         
         WeakReferenceMessenger.Default.Register<NavigateMessage>(this, (r, m) =>
         {
-            if (m.FrameName == Constants.FrameMainVindow)
+            if (m.FrameName == Constants.FrameMainVindowView)
             {
                 var page = (Page)_host.Services.GetRequiredService(m.PageType)!;
                 FrameMW.Navigate(page);
