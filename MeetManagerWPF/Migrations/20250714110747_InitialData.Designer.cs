@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeetManagerWPF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250710112746_EventsMigration")]
-    partial class EventsMigration
+    [Migration("20250714110747_InitialData")]
+    partial class InitialData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,38 @@ namespace MeetManagerWPF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EventTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Koncert"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Oslava"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Divadlo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Ples"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Vystoupení"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Sraz"
+                        });
                 });
 
             modelBuilder.Entity("MeetManagerWPF.Model.Invitation", b =>
@@ -161,6 +193,36 @@ namespace MeetManagerWPF.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Capacity = 120,
+                            Location = "Vysočina",
+                            Name = "chata pod smrkem"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Capacity = 120,
+                            Location = "Brno",
+                            Name = "jeskyně"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Capacity = 120,
+                            Location = "Lipník",
+                            Name = "sokolovna"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Capacity = 120,
+                            Location = "Pardubice",
+                            Name = "areal u smutného psa"
+                        });
                 });
 
             modelBuilder.Entity("MeetManagerWPF.Model.User", b =>

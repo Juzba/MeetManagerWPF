@@ -27,7 +27,7 @@ namespace MeetManagerWPF
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<UserStore>();
 
-                services.AddTransient<NavigateMessage>();
+                //services.AddTransient<NavigateMessage>();
                 services.AddTransient<INavigationService, NavigationService>();
                 services.AddTransient<IDataService, DataService>();
                 services.AddTransient<IHashService, HashService>();

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MeetManagerWPF.Migrations
 {
     /// <inheritdoc />
-    public partial class EventsMigration : Migration
+    public partial class InitialData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -134,6 +134,19 @@ namespace MeetManagerWPF.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "EventTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Koncert" },
+                    { 2, "Oslava" },
+                    { 3, "Divadlo" },
+                    { 4, "Ples" },
+                    { 5, "Vystoupení" },
+                    { 6, "Sraz" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "RoleName" },
                 values: new object[,]
@@ -141,6 +154,17 @@ namespace MeetManagerWPF.Migrations
                     { "AdminRoleId-51sa9-sdd18", "Admin" },
                     { "ManagerRoleId-21ga5-sda13", "Manager" },
                     { "UserRoleId-54sa9-sda87", "User" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "ID", "Capacity", "Location", "Name" },
+                values: new object[,]
+                {
+                    { 1, 120, "Vysočina", "chata pod smrkem" },
+                    { 2, 120, "Brno", "jeskyně" },
+                    { 3, 120, "Lipník", "sokolovna" },
+                    { 4, 120, "Pardubice", "areal u smutného psa" }
                 });
 
             migrationBuilder.InsertData(

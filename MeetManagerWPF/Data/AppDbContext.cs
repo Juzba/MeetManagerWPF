@@ -25,7 +25,6 @@ namespace MeetManagerWPF.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
 
 
             modelBuilder.Entity<Role>().HasData
@@ -44,6 +43,25 @@ namespace MeetManagerWPF.Data
 
             modelBuilder.Entity<User>().HasKey("Id");
 
+            modelBuilder.Entity<EventType>().HasData
+                (
+                new EventType() { Id = 1, Name = "Koncert" },
+                new EventType() { Id = 2, Name = "Oslava" },
+                new EventType() { Id = 3, Name = "Divadlo" },
+                new EventType() { Id = 4, Name = "Ples" },
+                new EventType() { Id = 5, Name = "Vystoupení" },
+                new EventType() { Id = 6, Name = "Sraz" }
+                );
+
+            modelBuilder.Entity<Room>().HasData
+                (
+                new Room() { ID = 1, Name = "chata pod smrkem", Capacity = 120, Location = "Vysočina" },
+                new Room() { ID = 2, Name = "jeskyně", Capacity = 120, Location = "Brno" },
+                new Room() { ID = 3, Name = "sokolovna", Capacity = 120, Location = "Lipník" },
+                new Room() { ID = 4, Name = "areal u smutného psa", Capacity = 120, Location = "Pardubice" }
+                );
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -64,7 +64,7 @@ public partial class LoginViewModel(IDataService dataService, UserStore userStor
         _userStore.User = user;
         _userStore.IsUserLogged = true;
 
-        _navigation.NavigateTo<AdminPage>();
+        _navigation.NavigateTo<ManagerPage>();
 
     }
 }
