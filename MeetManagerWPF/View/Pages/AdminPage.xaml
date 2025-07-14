@@ -94,9 +94,10 @@
                     </DataGridTemplateColumn.CellTemplate>
 
                     <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
+                        <DataTemplate>  
                             <ComboBox
                                 DisplayMemberPath="RoleName"
+                                Loaded="ComboBox_Loaded"
                                 ItemsSource="{Binding DataContext.RoleList, RelativeSource={RelativeSource AncestorType=Page}}"
                                 SelectedValue="{Binding RoleId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 SelectedValuePath="Id" />

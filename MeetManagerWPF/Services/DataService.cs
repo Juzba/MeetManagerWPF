@@ -7,9 +7,12 @@ namespace MeetManagerWPF.Services
     public interface IDataService
     {
         Task AddUser(User user);
+        Task AddEvent(Event newEvent);
         Task DeleteUser(User user);
         Task<User?> GetUser(string email);
-        Task<IEnumerable<User>> GetUsersList();
+        Task<ICollection<User>> GetUsersList();
+        Task<ICollection<EventType>> GetEventTypeList();
+        Task<ICollection<Room>> GetRoomList();
         Task UpdateUsersList();
     }
 
@@ -27,6 +30,13 @@ namespace MeetManagerWPF.Services
             await _db.SaveChangesAsync();
         }
 
+        // ADD EVENT //
+        public async Task AddEvent(Event newEwent)
+        {
+            await _db.Events.AddAsync(newEwent);
+            await _db.SaveChangesAsync();
+        }
+
         // DELETE USER //
         public async Task DeleteUser(User user)
         {
@@ -36,24 +46,19 @@ namespace MeetManagerWPF.Services
 
 
         // GET USER //
-        public async Task<User?> GetUser(string email)
-        {
-            return await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Email == email);
-        }
-
+        public async Task<User?> GetUser(string email) => await _db.Users.Include(p => p.Role).FirstOrDefaultAsync(p => p.Email == email);
 
         // GET USERS LIST //
-        public async Task<IEnumerable<User>> GetUsersList()
-        {
-            return await _db.Users.Include(p => p.Role).ToListAsync();
-        }
+        public async Task<ICollection<User>> GetUsersList() => await _db.Users.Include(p => p.Role).ToListAsync();
 
+        // GET EVENT TYPE LIST //
+        public async Task<ICollection<EventType>> GetEventTypeList() => await _db.EventTypes.ToListAsync();
 
-        // UPDATE USERS LIST //
-        public async Task UpdateUsersList()
-        {
-            await _db.SaveChangesAsync();
-        }
+        // GET EVENT TYPE LIST //
+        public async Task<ICollection<Room>> GetRoomList() => await _db.Rooms.ToListAsync();
+
+        // SAVE USERS LIST //
+        public async Task UpdateUsersList() => await _db.SaveChangesAsync();
 
 
     }
